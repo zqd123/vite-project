@@ -13,6 +13,12 @@ import HelloWorld from "./components/HelloWorld.vue";
   </div>
   <HelloWorld msg="Vite + Vue" />
   <el-button type="primary">测试按钮</el-button>
+  <!-- flex弹性盒子 -->
+  <div class="flex">
+    <label>测试tailwindCss</label>
+    <el-input value="测试tailwindCss的flex属性"></el-input>
+    <el-button>测试</el-button>
+  </div>
 </template>
 
 <style scoped>

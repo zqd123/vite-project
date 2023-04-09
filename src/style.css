@@ -1,3 +1,8 @@
+/**style.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* FIXME:引入tailwind后，发现有些默认样式，比如tailwind设置了img、svg、video等标签默认样式 */
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
