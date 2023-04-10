@@ -1,23 +1,24 @@
 <script setup lang="ts">
-import HelloWorld from "./components/HelloWorld.vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+const go = (name: string) => {
+  router.push({ name });
+};
 </script>
 
 <template>
   <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
-  <el-button type="primary">测试按钮</el-button>
-  <!-- flex弹性盒子 -->
-  <div class="flex">
-    <label>测试tailwindCss</label>
-    <el-input value="测试tailwindCss的flex属性"></el-input>
-    <el-button>测试</el-button>
+    <el-button @click="go('home')">Home</el-button>
+    <el-button @click="go('about')">About</el-button>
+    <p class="flex flex-col">
+      <!--使用 router-link 组件进行导航 -->
+      <!--通过传递 `to` 来指定链接 -->
+      <!--`<router-link>` 将呈现一个带有正确 `href` 属性的 `<a>` 标签-->
+      <router-link to="/">Go to Home</router-link>
+      <router-link to="/about">Go to About</router-link>
+    </p>
+    <RouterView></RouterView>
   </div>
 </template>
 
