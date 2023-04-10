@@ -1,13 +1,20 @@
-import Home from '../views/Home.vue'
-import About from '../views/About.vue'
 import {createRouter,createWebHashHistory} from 'vue-router'
-const routes = [
-  { path: '/', name:'home',component: Home },
-  { path: '/about',name:'about', component: About },
-]
+import routes from './routes'
+
 
 const router = createRouter({
   history: createWebHashHistory(),
   routes
 })
+
+/**前置守卫 */
+router.beforeEach((to,from)=>{
+  console.log({to,from});
+  return true;
+})
+/**后置守卫 */
+router.afterEach((to,from)=>{
+  // console.log({to,from});
+})
+
 export default router
