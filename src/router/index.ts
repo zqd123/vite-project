@@ -1,20 +1,11 @@
 import {createRouter,createWebHashHistory} from 'vue-router'
 import routes from './routes'
 
-
+// 创建路由实例并传递 `routes` 配置
 const router = createRouter({
+  // 内部提供了 history 模式的实现。为了简单起见，我们在这里使用 hash 模式。
   history: createWebHashHistory(),
   routes
-})
-
-/**前置守卫 */
-router.beforeEach((to,from)=>{
-  console.log({to,from});
-  return true;
-})
-/**后置守卫 */
-router.afterEach((to,from)=>{
-  // console.log({to,from});
 })
 
 export default router
