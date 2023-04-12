@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-
+import { useUserStore } from "./store/user";
+const userStore = useUserStore();
 const router = useRouter();
 const go = (name: string) => {
   router.push({ name });
@@ -9,6 +10,7 @@ const go = (name: string) => {
 
 <template>
   <div>
+    姓名：{{ userStore.name }}
     <el-button @click="go('home')">Home</el-button>
     <el-button @click="go('about')">About</el-button>
     <p class="flex flex-col">

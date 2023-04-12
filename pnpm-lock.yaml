@@ -7,6 +7,9 @@ dependencies:
   nprogress:
     specifier: ^0.2.0
     version: 0.2.0
+  pinia:
+    specifier: ^2.0.34
+    version: 2.0.34(typescript@4.9.3)(vue@3.2.47)
   vue:
     specifier: ^3.2.47
     version: 3.2.47
@@ -15,6 +18,9 @@ dependencies:
     version: 4.1.6(vue@3.2.47)
 
 devDependencies:
+  '@types/nprogress':
+    specifier: ^0.2.0
+    version: 0.2.0
   '@vitejs/plugin-vue':
     specifier: ^4.1.0
     version: 4.1.0(vite@4.2.0)(vue@3.2.47)
@@ -379,6 +385,10 @@ packages:
   /@types/lodash@4.14.192:
     resolution: {integrity: sha512-km+Vyn3BYm5ytMO13k9KTp27O75rbQ0NFw+U//g+PX7VZyjCioXaRFisqSIJRECljcTv73G3i6BpglNGHgUQ5A==}
     dev: false
+
+  /@types/nprogress@0.2.0:
+    resolution: {integrity: sha512-1cYJrqq9GezNFPsWTZpFut/d4CjpZqA0vhqDUPFWYKF1oIyBz5qnoYMzR+0C/T96t3ebLAC1SSnwrVOm5/j74A==}
+    dev: true
 
   /@types/web-bluetooth@0.0.16:
     resolution: {integrity: sha512-oh8q2Zc32S6gd/j50GowEjKLoOVOwHP/bWVjKJInBwQqdOYMdPrf1oVlelTlyfFK3CKxL1uahMDAr+vy8T7yMQ==}
@@ -1076,6 +1086,24 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  /pinia@2.0.34(typescript@4.9.3)(vue@3.2.47):
+    resolution: {integrity: sha512-cgOoGUiyqX0SSgX8XelK9+Ri4XA2/YyNtgjogwfzIx1g7iZTaZPxm7/bZYMCLU2qHRiHhxG7SuQO0eBacFNc2Q==}
+    peerDependencies:
+      '@vue/composition-api': ^1.4.0
+      typescript: '>=4.4.4'
+      vue: ^2.6.14 || ^3.2.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+      typescript:
+        optional: true
+    dependencies:
+      '@vue/devtools-api': 6.5.0
+      typescript: 4.9.3
+      vue: 3.2.47
+      vue-demi: 0.13.11(vue@3.2.47)
+    dev: false
+
   /pirates@4.0.5:
     resolution: {integrity: sha512-8V9+HQPupnaXMA23c5hvl69zXvTwTzyAYasnkb0Tts4XvO4CliqONMOnvlq26rkhLC3nWDFBJf73LU1e1VZLaQ==}
     engines: {node: '>= 6'}
@@ -1316,7 +1344,6 @@ packages:
     resolution: {integrity: sha512-CIfGzTelbKNEnLpLdGFgdyKhG23CKdKgQPOBc+OUNrkJ2vr+KSzsSV5kq5iWhEQbok+quxgGzrAtGWCyU7tHnA==}
     engines: {node: '>=4.2.0'}
     hasBin: true
-    dev: true
 
   /ufo@1.1.1:
     resolution: {integrity: sha512-MvlCc4GHrmZdAllBc0iUDowff36Q9Ndw/UzqmEKyrfSzokTd9ZCy1i+IIk5hrYKkjoYVQyNbrw7/F8XJ2rEwTg==}
