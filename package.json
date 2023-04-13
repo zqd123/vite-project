@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview"
@@ -26,5 +27,9 @@
     "unplugin-vue-components": "^0.24.1",
     "vite": "^4.2.0",
     "vue-tsc": "^1.2.0"
+  },
+  "engines": {
+    "node": "14.21.3",
+    "pnpm": "7.32.0"
   }
 }
