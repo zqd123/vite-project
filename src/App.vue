@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 import { useUserStore } from "./store/user";
+import FirstTest from "./views/first-test/index.vue";
 const userStore = useUserStore();
 const router = useRouter();
 const go = (name: string) => {
@@ -10,6 +11,7 @@ const go = (name: string) => {
 
 <template>
   <div>
+    <FirstTest></FirstTest>
     姓名：{{ userStore.name }}
     <el-button @click="go('home')">Home</el-button>
     <el-button @click="go('about')">About</el-button>
