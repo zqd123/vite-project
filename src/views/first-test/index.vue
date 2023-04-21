@@ -1,12 +1,7 @@
-<script setup lang="ts">
-import images from "./allImage";
-</script>
+<script setup lang="ts"></script>
 <template>
   <div>
-    first test
-    <template v-for="item in images" :key="item.id">
-      <img :src="'src/assets/first-test/' + item.url + '.png'" />
-    </template>
+    <router-view></router-view>
   </div>
 </template>
 <style scoped>
