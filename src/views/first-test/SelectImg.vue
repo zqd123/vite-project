@@ -14,12 +14,10 @@ const props = withDefaults(
     testItem: Image;
     isTest: boolean;
     testIndex: number;
-    trueIndex: number;
   }>(),
   {
     isTest: false,
     testIndex: 1,
-    trueIndex: 1,
   }
 );
 const baseUrl = ref("src/assets/first-test/");
@@ -62,7 +60,7 @@ const selectHandle = (image: Image) => {
   } else {
     image.selectedColor = "border-red-600";
   }
-  console.log("🚀 ~ file: SelectImg.vue:44 ~ selectHandle ~ image:", image);
+  // console.log("🚀 ~ file: SelectImg.vue:44 ~ selectHandle ~ image:", image);
 };
 </script>
 <template>

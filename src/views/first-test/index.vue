@@ -4,9 +4,4 @@
     <router-view></router-view>
   </div>
 </template>
-<style scoped>
-image {
-  width: 50px;
-  height: 100px;
-}
-</style>
+<style scoped></style>

@@ -1,3 +1,8 @@
+const baseUrl = "src/assets/first-test/";
+const preTrueIndex = [1, 2];
+const actionTrueIndex = [
+  1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2,
+];
 export interface Image {
   url: string;
   isPerfTest?: boolean;
@@ -5,79 +10,28 @@ export interface Image {
   isTrue?: boolean;
   children?: Image[];
 }
-const baseUrl = "src/assets/first-test/";
-export const testImages: Image[] = [
-  {
-    url: baseUrl + "t1.0",
-    children: [
-      {
-        url: baseUrl + "t1.1",
-      },
-      {
-        url: baseUrl + "t1.2",
-      },
-      {
-        url: baseUrl + "t1.3",
-      },
-      {
-        url: baseUrl + "t1.4",
-        isTrue: true,
-      },
-      {
-        url: baseUrl + "t1.5",
-      },
-      {
-        url: baseUrl + "t1.6",
-      },
-    ],
-  },
-  {
-    url: baseUrl + "t2.0",
-    children: [
-      {
-        url: baseUrl + "t2.1",
-      },
-      {
-        url: baseUrl + "t2.2",
-      },
-      {
-        url: baseUrl + "t2.3",
-        isTrue: true,
-      },
-      {
-        url: baseUrl + "t2.4",
-      },
-      {
-        url: baseUrl + "t2.5",
-      },
-      {
-        url: baseUrl + "t2.6",
-      },
-    ],
-  },
-];
-const Images: Image[] = [
-  {
-    url: baseUrl + "t1.1",
-  },
-  {
-    url: baseUrl + "t1.2",
-  },
-  {
-    url: baseUrl + "t1.3",
-  },
-  {
-    url: baseUrl + "t1.1",
-  },
-  {
-    url: baseUrl + "t1.1",
-  },
-  {
-    url: baseUrl + "t1.1",
-  },
-  {
-    url: baseUrl + "t1.1",
-  },
-];
 
-export default Images;
+const createImage = ({ preStr = "" } = {}) => {
+  const checkTrueArr = preStr === "" ? actionTrueIndex : preTrueIndex;
+  const testArr: Image[] = [];
+  for (let i = 1; i <= checkTrueArr.length; i++) {
+    const testObj: Image = {
+      url: `${baseUrl}${preStr}${i}.0`,
+    };
+    const arr: Image[] = [];
+    for (let index = 1; index <= 6; index++) {
+      const obj: Image = {
+        url: `${baseUrl}${preStr}${i}.${index}`,
+        isTrue: index === checkTrueArr[i - 1],
+      };
+      arr.push(obj);
+    }
+    testObj.children = arr;
+    testArr.push(testObj);
+  }
+  console.log("🚀 ~ file: allImage.ts:25 ~ createImage ~ testArr:", testArr);
+  return testArr;
+};
+
+export const testImages: Image[] = createImage({ preStr: "t" });
+export const images: Image[] = createImage();

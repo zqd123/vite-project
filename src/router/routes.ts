@@ -1,7 +1,11 @@
 import Home from "../views/Home.vue";
 import About from "../views/About.vue";
-import { RouteRecordRaw } from "vue-router";
+import type { RouteRecordRaw } from "vue-router";
 const routes: RouteRecordRaw[] = [
+  {
+    path: "/",
+    redirect: "first",
+  },
   {
     path: "/first",
     name: "home",
