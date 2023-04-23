@@ -43,6 +43,10 @@ const startAction = () => {
 </script>
 <template>
   <div>
+    <div v-show="!showAction && !showEnd">
+      <span v-if="isTest">实践</span>
+      案例 {{ testIndex + 1 }}/{{ isTest ? testImages.length : images.length }}
+    </div>
     <SelectImg
       v-show="!showAction && !showEnd"
       :test-item="currentItem"
@@ -50,7 +54,7 @@ const startAction = () => {
       :is-test="isTest"
       @select-true="selectTrue"
     ></SelectImg>
-    <!-- 开始正式实验 -->
+    <!-- 开始正式实验页面 -->
     <StartAction v-if="showAction" @start-action="startAction"></StartAction>
     <!-- 实验结束 -->
     <EndTest v-if="showEnd"></EndTest>

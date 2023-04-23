@@ -12,7 +12,7 @@ export const testImages: Image[] = [
     children: [
       {
         url: "src/assets/first-test/t1.1",
-        isTrue: true,
+        isTrue: false,
       },
       {
         url: "src/assets/first-test/t1.2",
@@ -24,7 +24,7 @@ export const testImages: Image[] = [
       },
       {
         url: "src/assets/first-test/t1.4",
-        isTrue: false,
+        isTrue: true,
       },
       {
         url: "src/assets/first-test/t1.5",
@@ -45,11 +45,11 @@ export const testImages: Image[] = [
       },
       {
         url: "src/assets/first-test/t2.2",
-        isTrue: true,
+        isTrue: false,
       },
       {
         url: "src/assets/first-test/t2.3",
-        isTrue: false,
+        isTrue: true,
       },
       {
         url: "src/assets/first-test/t2.4",
@@ -72,7 +72,7 @@ export const images: Image[] = [
     children: [
       {
         url: "src/assets/first-test/1.1",
-        isTrue: true,
+        isTrue: false,
       },
       {
         url: "src/assets/first-test/1.2",
@@ -84,7 +84,7 @@ export const images: Image[] = [
       },
       {
         url: "src/assets/first-test/1.4",
-        isTrue: false,
+        isTrue: true,
       },
       {
         url: "src/assets/first-test/1.5",
@@ -105,7 +105,7 @@ export const images: Image[] = [
       },
       {
         url: "src/assets/first-test/2.2",
-        isTrue: true,
+        isTrue: false,
       },
       {
         url: "src/assets/first-test/2.3",
@@ -117,7 +117,7 @@ export const images: Image[] = [
       },
       {
         url: "src/assets/first-test/2.5",
-        isTrue: false,
+        isTrue: true,
       },
       {
         url: "src/assets/first-test/2.6",
@@ -163,7 +163,7 @@ export const images: Image[] = [
       },
       {
         url: "src/assets/first-test/4.2",
-        isTrue: false,
+        isTrue: true,
       },
       {
         url: "src/assets/first-test/4.3",
@@ -171,7 +171,7 @@ export const images: Image[] = [
       },
       {
         url: "src/assets/first-test/4.4",
-        isTrue: true,
+        isTrue: false,
       },
       {
         url: "src/assets/first-test/4.5",
@@ -196,7 +196,7 @@ export const images: Image[] = [
       },
       {
         url: "src/assets/first-test/5.3",
-        isTrue: false,
+        isTrue: true,
       },
       {
         url: "src/assets/first-test/5.4",
@@ -204,7 +204,7 @@ export const images: Image[] = [
       },
       {
         url: "src/assets/first-test/5.5",
-        isTrue: true,
+        isTrue: false,
       },
       {
         url: "src/assets/first-test/5.6",
@@ -233,11 +233,11 @@ export const images: Image[] = [
       },
       {
         url: "src/assets/first-test/6.5",
-        isTrue: false,
+        isTrue: true,
       },
       {
         url: "src/assets/first-test/6.6",
-        isTrue: true,
+        isTrue: false,
       },
     ],
   },
@@ -246,7 +246,7 @@ export const images: Image[] = [
     children: [
       {
         url: "src/assets/first-test/7.1",
-        isTrue: true,
+        isTrue: false,
       },
       {
         url: "src/assets/first-test/7.2",
@@ -254,7 +254,7 @@ export const images: Image[] = [
       },
       {
         url: "src/assets/first-test/7.3",
-        isTrue: false,
+        isTrue: true,
       },
       {
         url: "src/assets/first-test/7.4",
@@ -275,11 +275,11 @@ export const images: Image[] = [
     children: [
       {
         url: "src/assets/first-test/8.1",
-        isTrue: false,
+        isTrue: true,
       },
       {
         url: "src/assets/first-test/8.2",
-        isTrue: true,
+        isTrue: false,
       },
       {
         url: "src/assets/first-test/8.3",
@@ -304,7 +304,7 @@ export const images: Image[] = [
     children: [
       {
         url: "src/assets/first-test/9.1",
-        isTrue: false,
+        isTrue: true,
       },
       {
         url: "src/assets/first-test/9.2",
@@ -312,7 +312,7 @@ export const images: Image[] = [
       },
       {
         url: "src/assets/first-test/9.3",
-        isTrue: true,
+        isTrue: false,
       },
       {
         url: "src/assets/first-test/9.4",
@@ -345,11 +345,11 @@ export const images: Image[] = [
       },
       {
         url: "src/assets/first-test/10.4",
-        isTrue: true,
+        isTrue: false,
       },
       {
         url: "src/assets/first-test/10.5",
-        isTrue: false,
+        isTrue: true,
       },
       {
         url: "src/assets/first-test/10.6",
@@ -420,11 +420,11 @@ export const images: Image[] = [
     children: [
       {
         url: "src/assets/first-test/13.1",
-        isTrue: true,
+        isTrue: false,
       },
       {
         url: "src/assets/first-test/13.2",
-        isTrue: false,
+        isTrue: true,
       },
       {
         url: "src/assets/first-test/13.3",
@@ -453,7 +453,7 @@ export const images: Image[] = [
       },
       {
         url: "src/assets/first-test/14.2",
-        isTrue: true,
+        isTrue: false,
       },
       {
         url: "src/assets/first-test/14.3",
@@ -461,7 +461,7 @@ export const images: Image[] = [
       },
       {
         url: "src/assets/first-test/14.4",
-        isTrue: false,
+        isTrue: true,
       },
       {
         url: "src/assets/first-test/14.5",
@@ -486,7 +486,7 @@ export const images: Image[] = [
       },
       {
         url: "src/assets/first-test/15.3",
-        isTrue: true,
+        isTrue: false,
       },
       {
         url: "src/assets/first-test/15.4",
@@ -498,7 +498,7 @@ export const images: Image[] = [
       },
       {
         url: "src/assets/first-test/15.6",
-        isTrue: false,
+        isTrue: true,
       },
     ],
   },
@@ -511,7 +511,7 @@ export const images: Image[] = [
       },
       {
         url: "src/assets/first-test/16.2",
-        isTrue: false,
+        isTrue: true,
       },
       {
         url: "src/assets/first-test/16.3",
@@ -519,7 +519,7 @@ export const images: Image[] = [
       },
       {
         url: "src/assets/first-test/16.4",
-        isTrue: true,
+        isTrue: false,
       },
       {
         url: "src/assets/first-test/16.5",
@@ -565,7 +565,7 @@ export const images: Image[] = [
     children: [
       {
         url: "src/assets/first-test/18.1",
-        isTrue: false,
+        isTrue: true,
       },
       {
         url: "src/assets/first-test/18.2",
@@ -585,7 +585,7 @@ export const images: Image[] = [
       },
       {
         url: "src/assets/first-test/18.6",
-        isTrue: true,
+        isTrue: false,
       },
     ],
   },
@@ -627,7 +627,7 @@ export const images: Image[] = [
       },
       {
         url: "src/assets/first-test/20.2",
-        isTrue: true,
+        isTrue: false,
       },
       {
         url: "src/assets/first-test/20.3",
@@ -643,7 +643,7 @@ export const images: Image[] = [
       },
       {
         url: "src/assets/first-test/20.6",
-        isTrue: false,
+        isTrue: true,
       },
     ],
   },

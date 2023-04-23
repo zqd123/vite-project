@@ -67,15 +67,17 @@ const selectHandle = (image: Image) => {
   <div>
     <!-- 练习案例1 / 2 -->
 
-    <div class="flex gap-2 items-center">
-      <div class="border-4 border-black">
+    <div class="flex gap-8 items-center">
+      <div
+        class="w-40 h-36 bg-white flex justify-center items-center border-4 rounded-xl overflow-hidden border-black"
+      >
         <img :src="testItem.url + '.png'" />
       </div>
       <div class="grid grid-cols-2 gap-4">
         <div
           v-for="item in testItem.children"
           :key="item.url"
-          class="border-4"
+          class="w-40 h-36 bg-white flex justify-center items-center border-4 rounded-xl overflow-hidden"
           :class="item.selectedColor"
           @click="selectHandle(item)"
         >
@@ -87,9 +89,4 @@ const selectHandle = (image: Image) => {
 
   <!-- 恭喜! 现在您将看到20组熟悉的图形。 按Q键开始MFFT游戏。 -->
 </template>
-<style scoped>
-img {
-  width: 150px;
-  height: 150px;
-}
-</style>
+<style scoped></style>
