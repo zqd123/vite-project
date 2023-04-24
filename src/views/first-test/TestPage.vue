@@ -24,14 +24,6 @@ const firstClickTime = ref(0);
 const errorSum = ref(0);
 /**选中正确选项回调 */
 const selectTrue = () => {
-  if (isTest.value === true && testIndex.value === testImages.length - 1) {
-    showAction.value = true;
-    return;
-  }
-  if (isTest.value === false && testIndex.value === images.length - 1) {
-    showEnd.value = true;
-    return;
-  }
   //正式实验数据保存到store中
   if (isTest.value === false) {
     experimentStore.experimentData.push({
@@ -43,6 +35,14 @@ const selectTrue = () => {
       errorSelectSum: errorSum.value,
     });
     console.table(experimentStore.experimentData);
+  }
+  if (isTest.value === true && testIndex.value === testImages.length - 1) {
+    showAction.value = true;
+    return;
+  }
+  if (isTest.value === false && testIndex.value === images.length - 1) {
+    showEnd.value = true;
+    return;
   }
   errorSum.value = 0;
   startTime.value = new Date();
@@ -71,6 +71,7 @@ const startAction = () => {
   startTime.value = new Date();
   experimentStore.experimentData = []; //清空数据
 };
+/**计算时间差 */
 const computeTimes = (startTime: Date) => {
   const nowTime = new Date();
   const count = nowTime.getTime() - startTime.getTime();

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Download } from "@element-plus/icons-vue";
 import { Experiment, useExperimentStore } from "../../store/experiment";
 
 const experimentStore = useExperimentStore();
@@ -34,19 +35,31 @@ const download = (str: string, data: Experiment[]) => {
 };
 </script>
 <template>
-  <div>恭喜! 你已经完成了匹配熟悉人物任务</div>
-  <div>
+  <div class="flex flex-col justify-center items-center">
+    <div>恭喜! 你已经完成了匹配任务</div>
     <div>
-      <el-button type="primary" @click="exportTable">导出数据</el-button>
+      <div class="flex justify-end pb-2">
+        <el-button type="primary" @click="exportTable">
+          <el-icon><Download /></el-icon>
+          <span class="pl-1">导出数据</span>
+        </el-button>
+      </div>
+      <el-table
+        :data="experimentStore.experimentData"
+        max-height="60vh"
+        style="width: 60vw"
+        :border="true"
+        center
+      >
+        <el-table-column type="index" label="序号" width="100">
+        </el-table-column>
+        <el-table-column prop="selectFirstTime" label="首次点击用时(秒)">
+        </el-table-column>
+        <el-table-column prop="selectTrueTimes" label="选择正确用时(秒)">
+        </el-table-column>
+        <el-table-column prop="errorSelectSum" label="错误次数">
+        </el-table-column>
+      </el-table>
     </div>
-    <el-table :data="experimentStore.experimentData" max-height="60vh">
-      <el-table-column type="index"> </el-table-column>
-      <el-table-column prop="selectFirstTime" label="首次点击用时">
-      </el-table-column>
-      <el-table-column prop="selectTrueTimes" label="选择正确用时">
-      </el-table-column>
-      <el-table-column prop="errorSelectSum" label="错误次数">
-      </el-table-column>
-    </el-table>
   </div>
 </template>
