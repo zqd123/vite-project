@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://zhangqd123.github.io/vite-project",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "prepare": "husky install",
