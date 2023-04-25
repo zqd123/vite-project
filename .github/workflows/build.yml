@@ -1,5 +1,7 @@
 name: buildAndDeploy
-on: push
+on: push: 
+    branches: 
+      - main # 这里表示push到main分支就会触发流程
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest # 我们选择使用最新的ubuntu系统
