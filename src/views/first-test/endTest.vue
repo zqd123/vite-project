@@ -3,7 +3,9 @@ import { Download } from "@element-plus/icons-vue";
 import { Experiment, useExperimentStore } from "../../store/experiment";
 
 const experimentStore = useExperimentStore();
-
+experimentStore.userInfo.experimentData = experimentStore.experimentData;
+experimentStore.saveStoreLocal();
+/**导出表格 */
 const exportTable = () => {
   console.log("导出数据");
   download(
@@ -11,12 +13,8 @@ const exportTable = () => {
     experimentStore.experimentData
   );
 };
+/**下载方法 */
 const download = (str: string, data: Experiment[]) => {
-  console.table(data);
-  console.log(
-    "🚀 ~ file: endTest.vue:14 ~ download ~ data:",
-    data instanceof Array
-  );
   // 增加\t为了不让表格显示科学计数法或者其他格式
   for (let i = 0; i < data.length; i++) {
     for (const key in data[i]) {
@@ -30,7 +28,10 @@ const download = (str: string, data: Experiment[]) => {
   const link = document.createElement("a");
   link.href = uri;
   // 对下载的文件命名
-  link.download = "下载数据.csv";
+  link.download =
+    experimentStore.userInfo.studyName +
+    experimentStore.userInfo.studyCode +
+    ".csv";
   link.click();
 };
 </script>
@@ -38,10 +39,10 @@ const download = (str: string, data: Experiment[]) => {
   <div class="flex flex-col justify-center items-center">
     <div>恭喜! 你已经完成了匹配任务</div>
     <div>
-      <div class="flex justify-end pb-2">
-        <div>
-          <span>姓名：{{ experimentStore.userInfo.studyName }}</span>
+      <div class="flex justify-between pb-2">
+        <div class="flex items-center gap-2">
           <span>学号：{{ experimentStore.userInfo.studyCode }}</span>
+          <span>姓名：{{ experimentStore.userInfo.studyName }}</span>
         </div>
         <el-button type="primary" @click="exportTable">
           <el-icon><Download /></el-icon>

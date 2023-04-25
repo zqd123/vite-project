@@ -1,18 +1,30 @@
 <script setup lang="ts">
-import { useRouter } from "vue-router";
-import { useUserStore } from "./store/user";
-import FirstTest from "./views/first-test/index.vue";
-const userStore = useUserStore();
-const router = useRouter();
-const go = (name: string) => {
-  router.push({ name });
+import router from "./router";
+import { useExperimentStore } from "./store/experiment";
+const experimentStore = useExperimentStore();
+
+window.addEventListener("beforeunload", (e) => {
+  e.preventDefault();
+  e.returnValue = "";
+});
+
+const showHistory = () => {
+  console.log("历史记录：", experimentStore.userInfo);
 };
 </script>
 
 <template>
   <div>
-    <!-- <router-link to="/first">实验一</router-link>
-    <router-link to="/seconde">实验二</router-link> -->
+    <div class="fixed left-2 top-2" @click="router.push({ path: '/login' })">
+      <el-icon color="#409EFC">
+        <HomeFilled />
+      </el-icon>
+    </div>
+    <div class="fixed right-2 bottom-2" @click="showHistory">
+      <el-icon color="#409EFC">
+        <Clock />
+      </el-icon>
+    </div>
     <RouterView></RouterView>
   </div>
 </template>

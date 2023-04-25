@@ -8,10 +8,17 @@ export interface User {
   studyCode?: string;
   studyName: string;
   email?: string;
+  experimentData?: Experiment[];
 }
 export const useExperimentStore = defineStore("experiment", {
   state: () => ({
     userInfo: {} as User,
     experimentData: [] as Experiment[],
   }),
+  getters: {},
+  actions: {
+    saveStoreLocal() {
+      localStorage.setItem("experiment", JSON.stringify(this.userInfo));
+    },
+  },
 });
