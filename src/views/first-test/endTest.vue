@@ -39,6 +39,10 @@ const download = (str: string, data: Experiment[]) => {
     <div>恭喜! 你已经完成了匹配任务</div>
     <div>
       <div class="flex justify-end pb-2">
+        <div>
+          <span>姓名：{{ experimentStore.userInfo.studyName }}</span>
+          <span>学号：{{ experimentStore.userInfo.studyCode }}</span>
+        </div>
         <el-button type="primary" @click="exportTable">
           <el-icon><Download /></el-icon>
           <span class="pl-1">导出数据</span>

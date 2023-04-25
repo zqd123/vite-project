@@ -2,7 +2,8 @@
 import { reactive, ref } from "vue";
 import router from "../../router";
 import type { FormInstance, FormRules } from "element-plus";
-
+import { useExperimentStore } from "../../store/experiment";
+const experimentStore = useExperimentStore();
 const labelPosition = ref("right");
 const ruleFormRef = ref<FormInstance>();
 const formLabelAlign = reactive({
@@ -19,6 +20,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
   if (!formEl) return;
   await formEl.validate((valid, fields) => {
     if (valid) {
+      experimentStore.userInfo = formLabelAlign;
       router.push({ path: "/welcome" });
     } else {
       console.log("error submit!", fields);
