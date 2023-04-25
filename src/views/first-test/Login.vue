@@ -21,7 +21,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
   await formEl.validate((valid, fields) => {
     if (valid) {
       experimentStore.userInfo = formLabelAlign;
-      router.push({ path: "/welcome" });
+      router.push({ path: "/guidance" });
     } else {
       console.log("error submit!", fields);
     }
@@ -43,9 +43,9 @@ const submitForm = async (formEl: FormInstance | undefined) => {
         <el-form-item label="姓名" prop="studyName">
           <el-input v-model="formLabelAlign.studyName" />
         </el-form-item>
-        <el-form-item label="邮箱" prop="email">
+        <!-- <el-form-item label="邮箱" prop="email">
           <el-input v-model="formLabelAlign.email" />
-        </el-form-item>
+        </el-form-item> -->
         <el-button
           type="primary"
           size="default"

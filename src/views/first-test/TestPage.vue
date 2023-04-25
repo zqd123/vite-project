@@ -81,7 +81,7 @@ const computeTimes = (startTime: Date) => {
 </script>
 <template>
   <div>
-    <div v-show="!showAction && !showEnd">
+    <div v-show="!showAction && !showEnd" class="text-left">
       <span v-if="isTest">实践</span>
       案例 {{ testIndex + 1 }}/{{ isTest ? testImages.length : images.length }}
     </div>

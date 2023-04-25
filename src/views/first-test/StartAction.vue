@@ -11,5 +11,8 @@ document.addEventListener("keyup", (e: KeyboardEvent) => {
 });
 </script>
 <template>
-  <div>恭喜! 现在您将看到20组熟悉的图形。 按Q键开始MFFT游戏。</div>
+  <div>
+    恭喜! 现在您将看到20组熟悉的图形。<br />
+    按Q键开始游戏。
+  </div>
 </template>

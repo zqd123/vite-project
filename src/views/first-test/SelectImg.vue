@@ -2,6 +2,8 @@
 import { ref, withDefaults, defineProps, defineEmits, watch } from "vue";
 import { Image } from "./allImage";
 const emit = defineEmits(["select-true", "select-error"]);
+const showError = ref(false);
+const showTrue = ref(false);
 const props = withDefaults(
   defineProps<{
     testItem: Image;
@@ -23,20 +25,36 @@ watch(
 );
 const selectHandle = (image: Image) => {
   if (image.isTrue) {
-    image.selectedColor = "border-lime-400";
+    showTrue.value = true;
+    image.selectedColor = "border-black";
     setTimeout(() => {
       emit("select-true");
-    }, 500);
+    }, 300);
+    setTimeout(() => {
+      showTrue.value = false;
+    }, 200);
   } else {
+    showError.value = true;
     image.selectedColor = "border-red-600";
     emit("select-error");
+    setTimeout(() => {
+      showError.value = false;
+    }, 200);
   }
   // console.log("🚀 ~ file: SelectImg.vue:44 ~ selectHandle ~ image:", image);
 };
 </script>
 <template>
   <div>
-    <div class="flex gap-8 items-center">
+    <div class="relative flex gap-8 items-center">
+      <div class="absolute left-2 top-2">
+        <span v-show="showTrue" class="p-2 rounded bg-black text-white"
+          >正确</span
+        >
+        <span v-show="showError" class="p-2 rounded bg-red-600 text-white"
+          >错误</span
+        >
+      </div>
       <div
         class="w-40 h-36 p-2 bg-white flex justify-center items-center border-4 rounded-xl overflow-hidden border-black"
       >
