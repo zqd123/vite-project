@@ -1,11 +1,12 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+import AutoImport from "unplugin-auto-import/vite";
+import Components from "unplugin-vue-components/vite";
+import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "./", //静态资源访问路径（部署）
   plugins: [
     vue(),
     AutoImport({
@@ -15,4 +16,4 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
     }),
   ],
-})
+});
