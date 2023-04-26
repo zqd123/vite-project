@@ -1,4 +1,5 @@
-const baseUrl = "src/assets/first-test/";
+// const baseUrl = "src/assets/first-test/";
+const baseUrl = "";
 const preTrueIndex = [4, 3];
 /*eslint-disabled*/
 const actionTrueIndex = [
@@ -7,8 +8,8 @@ const actionTrueIndex = [
    *  5, 6, 2, 4, 6,
    *  2, 5, 1, 1, 6,
    */
-  // 4, 5, 3, 2, 3, 5, 3, 1, 1, 5, 5, 6, 2, 4, 6, 2, 5, 1, 1, 6,
-  4, 5, 3, 2,
+  4, 5, 3, 2, 3, 5, 3, 1, 1, 5, 5, 6, 2, 4, 6, 2, 5, 1, 1, 6,
+  // 4, 5, 3, 2,
 ];
 export interface Image {
   url: string;

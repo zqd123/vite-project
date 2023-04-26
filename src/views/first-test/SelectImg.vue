@@ -7,13 +7,8 @@ const showTrue = ref(false);
 const props = withDefaults(
   defineProps<{
     testItem: Image;
-    isTest: boolean;
-    testIndex: number;
   }>(),
-  {
-    isTest: false,
-    testIndex: 1,
-  }
+  {}
 );
 const testItem = ref(JSON.parse(JSON.stringify(props.testItem)) as Image);
 watch(
@@ -43,6 +38,10 @@ const selectHandle = (image: Image) => {
   }
   // console.log("🚀 ~ file: SelectImg.vue:44 ~ selectHandle ~ image:", image);
 };
+/**vite处理静态资源（重要） */
+const getAssetsFile = (url: string) => {
+  return new URL(`../../assets/first-test/${url}`, import.meta.url).href;
+};
 </script>
 <template>
   <div>
@@ -58,7 +57,7 @@ const selectHandle = (image: Image) => {
       <div
         class="w-40 h-36 p-2 bg-white flex justify-center items-center border-4 rounded-xl overflow-hidden border-black"
       >
-        <img :src="testItem.url + '.png'" />
+        <img :src="getAssetsFile(testItem.url + '.png')" />
       </div>
       <div class="grid grid-cols-2 gap-4">
         <div
@@ -68,7 +67,7 @@ const selectHandle = (image: Image) => {
           :class="item.selectedColor"
           @click="selectHandle(item)"
         >
-          <img :src="item.url + '.png'" />
+          <img :src="getAssetsFile(item.url + '.png')" />
         </div>
       </div>
     </div>
