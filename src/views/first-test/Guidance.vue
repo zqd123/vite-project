@@ -24,9 +24,7 @@ const nextStep = () => {
         请点击右方六个图片集中与左边图片一致的选项。<br />
         前 2 组为熟悉性实验.
       </div>
-      <div v-show="stepNum === 2">
-        点击进入预实验，您需要完成 20 组正式实验.
-      </div>
+      <div v-show="stepNum === 2">点击进入预实验.</div>
     </el-card>
     <el-button type="primary" @click="nextStep">
       <el-icon><DArrowRight /></el-icon>
