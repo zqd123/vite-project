@@ -3,6 +3,7 @@ import { reactive, ref } from "vue";
 import router from "../../router";
 import type { FormInstance, FormRules } from "element-plus";
 import { useExperimentStore } from "../../store/experiment";
+import { images, testImages } from "./allImage";
 const experimentStore = useExperimentStore();
 const labelPosition = ref("right");
 const ruleFormRef = ref<FormInstance>();
@@ -26,6 +27,11 @@ const submitForm = async (formEl: FormInstance | undefined) => {
       console.log("error submit!", fields);
     }
   });
+};
+
+/**vite处理静态资源（重要） */
+const getAssetsFile = (url: string) => {
+  return new URL(`../../assets/first-test/${url}`, import.meta.url).href;
 };
 </script>
 <template>
@@ -56,6 +62,24 @@ const submitForm = async (formEl: FormInstance | undefined) => {
         >
       </el-form>
     </el-card>
+  </div>
+  <div>
+    <template v-for="item in testImages" :key="item.url">
+      <div v-show="false">
+        <img :src="getAssetsFile`${item.url}.png`" alt="" />
+        <div v-for="child in item.children" :key="child.url">
+          <img :src="getAssetsFile(`${child.url}.png`)" alt="" />
+        </div>
+      </div>
+    </template>
+    <template v-for="item in images" :key="item.url">
+      <div v-show="false">
+        <img :src="getAssetsFile`${item.url}.png`" alt="" />
+        <div v-for="child in item.children" :key="child.url">
+          <img :src="getAssetsFile(`${child.url}.png`)" alt="" />
+        </div>
+      </div>
+    </template>
   </div>
 </template>
 
