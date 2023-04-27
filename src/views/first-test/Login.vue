@@ -66,7 +66,7 @@ const getAssetsFile = (url: string) => {
   <div>
     <template v-for="item in testImages" :key="item.url">
       <div v-show="false">
-        <img :src="getAssetsFile`${item.url}.png`" alt="" />
+        <img :src="getAssetsFile(`${item.url}.png`)" alt="" />
         <div v-for="child in item.children" :key="child.url">
           <img :src="getAssetsFile(`${child.url}.png`)" alt="" />
         </div>
@@ -74,7 +74,7 @@ const getAssetsFile = (url: string) => {
     </template>
     <template v-for="item in images" :key="item.url">
       <div v-show="false">
-        <img :src="getAssetsFile`${item.url}.png`" alt="" />
+        <img :src="getAssetsFile(`${item.url}.png`)" alt="" />
         <div v-for="child in item.children" :key="child.url">
           <img :src="getAssetsFile(`${child.url}.png`)" alt="" />
         </div>
