@@ -1,6 +1,6 @@
 // const baseUrl = "src/assets/first-test/";
 const baseUrl = "";
-const preTrueIndex = [4, 3];
+const preTrueIndex = [4, 5];
 /*eslint-disabled*/
 const actionTrueIndex = [
   /** 4, 5, 3, 2, 3,
