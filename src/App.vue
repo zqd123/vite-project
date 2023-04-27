@@ -15,16 +15,20 @@ const showHistory = () => {
 
 <template>
   <div>
-    <div class="fixed left-2 top-2" @click="router.push({ path: '/login' })">
+    <div
+      class="fixed left-2 top-2"
+      title="首页"
+      @click="router.push({ path: '/login' })"
+    >
       <el-icon color="#409EFC">
         <HomeFilled />
       </el-icon>
     </div>
-    <div class="fixed right-2 bottom-2" @click="showHistory">
+    <!-- <div class="fixed right-2 bottom-2" @click="showHistory">
       <el-icon color="#409EFC">
         <Clock />
       </el-icon>
-    </div>
+    </div> -->
     <RouterView></RouterView>
   </div>
 </template>
