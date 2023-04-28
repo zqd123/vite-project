@@ -37,16 +37,16 @@ const getAssetsFile = (url: string) => {
 <template>
   <div>
     <el-card class="w-96 h-72 flex justify-center items-center" shadow="always">
-      <el-icon color="#409EFC" :size="50" class="m-5"><Grape /></el-icon>
+      <el-icon color="#409EFC" :size="50" class="mb-8"><Grape /></el-icon>
       <el-form
         ref="ruleFormRef"
         :rules="rules"
         :label-position="labelPosition"
         :model="formLabelAlign"
       >
-        <el-form-item label="学号" prop="studyCode">
+        <!-- <el-form-item label="学号" prop="studyCode">
           <el-input v-model="formLabelAlign.studyCode" />
-        </el-form-item>
+        </el-form-item> -->
         <el-form-item label="姓名" prop="studyName">
           <el-input v-model="formLabelAlign.studyName" />
         </el-form-item>

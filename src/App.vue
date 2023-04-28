@@ -3,10 +3,10 @@ import router from "./router";
 import { useExperimentStore } from "./store/experiment";
 const experimentStore = useExperimentStore();
 
-window.addEventListener("beforeunload", (e) => {
-  e.preventDefault();
-  e.returnValue = "";
-});
+// window.addEventListener("beforeunload", (e) => {
+//   e.preventDefault();
+//   e.returnValue = "";
+// });
 
 const showHistory = () => {
   console.log("历史记录：", experimentStore.userInfo);
