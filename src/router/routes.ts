@@ -1,5 +1,3 @@
-import Home from "../views/Home.vue";
-import About from "../views/About.vue";
 import type { RouteRecordRaw } from "vue-router";
 const routes: RouteRecordRaw[] = [
   {
@@ -35,14 +33,21 @@ const routes: RouteRecordRaw[] = [
     ],
   },
   {
-    path: "/second",
-    name: "second",
+    path: "/seconde",
+    name: "seconde",
     redirect: "test2-1",
     children: [
       {
-        path: "/test2-1",
+        path: "/test2-1/:type/:second",
         name: "test2-1",
-        component: () => import("../views/second-test/Question.vue"),
+        component: () => import("../views/second-test/index.vue"),
+        props: true,
+      },
+      {
+        path: "endTest",
+        name: "endTest",
+        component: () => import("../views/second-test/endTest.vue"),
+        props: true,
       },
     ],
   },

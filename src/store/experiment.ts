@@ -10,10 +10,14 @@ export interface User {
   email?: string;
   experimentData?: Experiment[];
 }
+export interface CheckQuestion {
+  checkIndex: number;
+}
 export const useExperimentStore = defineStore("experiment", {
   state: () => ({
     userInfo: {} as User,
     experimentData: [] as Experiment[],
+    checkQuestion: [] as CheckQuestion[],
   }),
   getters: {},
   actions: {
