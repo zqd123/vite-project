@@ -4,7 +4,7 @@ import type { RouteRecordRaw } from "vue-router";
 const routes: RouteRecordRaw[] = [
   {
     path: "/",
-    redirect: "first",
+    redirect: "second",
   },
   {
     path: "/first",
@@ -34,7 +34,18 @@ const routes: RouteRecordRaw[] = [
       },
     ],
   },
-  { path: "/seconde", name: "about", component: About },
+  {
+    path: "/second",
+    name: "second",
+    redirect: "test2-1",
+    children: [
+      {
+        path: "/test2-1",
+        name: "test2-1",
+        component: () => import("../views/second-test/Question.vue"),
+      },
+    ],
+  },
 ];
 
 export default routes;
