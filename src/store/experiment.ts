@@ -11,7 +11,8 @@ export interface User {
   experimentData?: Experiment[];
 }
 export interface CheckQuestion {
-  checkIndex: number;
+  question1: number;
+  question2: number;
 }
 export const useExperimentStore = defineStore("experiment", {
   state: () => ({

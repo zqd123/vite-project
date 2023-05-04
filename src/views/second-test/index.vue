@@ -24,13 +24,14 @@ const testIndex = ref(0);
 /**当前实验项目 */
 const currentItem = ref(smallInformationImages[0]);
 /**选中正确选项回调 */
-const checkClickHandle = (val: number) => {
+const checkClickHandle = ({ question1 = 1, question2 = 1 } = {}) => {
   if (testIndex.value >= 2) {
     router.push({ path: "/seconde/endTest" });
     return;
   }
   experimentStore.checkQuestion.push({
-    checkIndex: val,
+    question1,
+    question2,
   });
   testIndex.value += 1;
   currentItem.value =

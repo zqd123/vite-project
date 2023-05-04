@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import { Image } from "../first-test/allImage";
+import Question from "./Question.vue";
 const emit = defineEmits(["checkClickHandle"]);
 const props = withDefaults(
   defineProps<{
@@ -7,7 +9,9 @@ const props = withDefaults(
   }>(),
   {}
 );
+const dialogVisible = ref(false);
 const selectHandle = (image: Image) => {
+  dialogVisible.value = true;
   emit("checkClickHandle");
 };
 /**vite处理静态资源（重要） */
@@ -28,5 +32,16 @@ const getAssetsFile = (url: string) => {
         <img :src="getAssetsFile(item.url + '.png')" />
       </div>
     </div>
+
+    <el-dialog v-model="dialogVisible" title="请选择" width="60%">
+      <Question></Question>
+      <template #footer>
+        <span class="dialog-footer">
+          <el-button type="primary" @click="dialogVisible = false">
+            确定
+          </el-button>
+        </span>
+      </template>
+    </el-dialog>
   </div>
 </template>

@@ -1,24 +1,19 @@
 <script setup lang="ts">
 import { Download } from "@element-plus/icons-vue";
-import { Experiment, useExperimentStore } from "../../store/experiment";
+import { CheckQuestion, useExperimentStore } from "../../store/experiment";
 
 const experimentStore = useExperimentStore();
-experimentStore.userInfo.experimentData = experimentStore.experimentData;
-experimentStore.saveStoreLocal();
 /**导出表格 */
 const exportTable = () => {
   console.log("导出数据");
-  download(
-    "首次点击用时,选择正确用时,错误次数\n",
-    experimentStore.experimentData
-  );
+  download("第一个问题分数,第二个问题分数\n", experimentStore.checkQuestion);
 };
 /**下载方法 */
-const download = (str: string, data: Experiment[]) => {
+const download = (str: string, data: CheckQuestion[]) => {
   // 增加\t为了不让表格显示科学计数法或者其他格式
   for (let i = 0; i < data.length; i++) {
     for (const key in data[i]) {
-      str += `${data[i][key as keyof Experiment] + "\t"},`;
+      str += `${data[i][key as keyof CheckQuestion] + "\t"},`;
     }
     str += "\n";
   }
@@ -28,10 +23,7 @@ const download = (str: string, data: Experiment[]) => {
   const link = document.createElement("a");
   link.href = uri;
   // 对下载的文件命名
-  link.download =
-    experimentStore.userInfo.studyName +
-    experimentStore.userInfo.studyCode +
-    ".csv";
+  link.download = experimentStore.userInfo.studyName ?? "export" + ".csv";
   link.click();
 };
 </script>
@@ -50,7 +42,7 @@ const download = (str: string, data: Experiment[]) => {
         </el-button>
       </div>
       <el-table
-        :data="experimentStore.experimentData"
+        :data="experimentStore.checkQuestion"
         max-height="60vh"
         style="width: 60vw"
         :border="true"
@@ -58,11 +50,9 @@ const download = (str: string, data: Experiment[]) => {
       >
         <el-table-column type="index" label="序号" width="100">
         </el-table-column>
-        <el-table-column prop="selectFirstTime" label="首次点击用时(秒)">
+        <el-table-column prop="question1" label="第一个问题分数">
         </el-table-column>
-        <el-table-column prop="selectTrueTimes" label="选择正确用时(秒)">
-        </el-table-column>
-        <el-table-column prop="errorSelectSum" label="错误次数">
+        <el-table-column prop="question2" label="第二个问题分数">
         </el-table-column>
       </el-table>
     </div>

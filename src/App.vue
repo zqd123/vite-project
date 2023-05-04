@@ -24,6 +24,9 @@ const showHistory = () => {
         <HomeFilled />
       </el-icon>
     </div>
+    <div class="fixed left-10 top-2">
+      <RouterLink to="/test2-1/small/10">实验二</RouterLink>
+    </div>
     <!-- <div class="fixed right-2 bottom-2" @click="showHistory">
       <el-icon color="#409EFC">
         <Clock />
