@@ -41,7 +41,7 @@ const download = (str: string, data: Experiment[]) => {
     <div>
       <div class="flex justify-between pb-2">
         <div class="flex items-center gap-2">
-          <span>学号：{{ experimentStore.userInfo.studyCode }}</span>
+          <!-- <span>学号：{{ experimentStore.userInfo.studyCode }}</span> -->
           <span>姓名：{{ experimentStore.userInfo.studyName }}</span>
         </div>
         <el-button type="primary" @click="exportTable">

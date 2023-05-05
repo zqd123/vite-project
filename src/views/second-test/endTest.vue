@@ -29,12 +29,11 @@ const download = (str: string, data: CheckQuestion[]) => {
 </script>
 <template>
   <div class="flex flex-col justify-center items-center">
-    <div>恭喜! 你已经完成了匹配任务</div>
+    <div>感谢您的合作!</div>
     <div>
       <div class="flex justify-between pb-2">
         <div class="flex items-center gap-2">
-          <span>学号：{{ experimentStore.userInfo.studyCode }}</span>
-          <span>姓名：{{ experimentStore.userInfo.studyName }}</span>
+          <!-- <span>姓名：{{ experimentStore.userInfo.studyName }}</span> -->
         </div>
         <el-button type="primary" @click="exportTable">
           <el-icon><Download /></el-icon>

@@ -11,14 +11,14 @@ import { SECONDETYPE } from "./commonEnum";
 import router from "../../router";
 
 const props = withDefaults(
-  defineProps<{ type: SECONDETYPE; second: number }>(),
+  defineProps<{ type: SECONDETYPE; second: string }>(),
   {
     type: SECONDETYPE.small,
-    second: 10,
+    second: "8",
   }
 );
 console.log("🚀 ~ file: index.vue:11 ~ props ~ props:", props);
-const experimentStore = useExperimentStore();
+// const experimentStore = useExperimentStore();
 /**实验索引 */
 const testIndex = ref(0);
 /**当前实验项目 */
@@ -30,19 +30,11 @@ currentItem.value =
     ? mediumInformationImages[testIndex.value]
     : largeInformationImages[testIndex.value];
 /**选中正确选项回调 */
-const checkClickHandle = ({ question1 = 1, question2 = 1 } = {}) => {
-  console.log(
-    "🚀 ~ file: index.vue:29 ~ checkClickHandle ~ testIndex.value:",
-    testIndex.value
-  );
+const checkClickHandle = () => {
   if (testIndex.value >= 2) {
     router.push({ path: "/seconde/endTest" });
     return;
   }
-  // experimentStore.checkQuestion.push({
-  //   question1,
-  //   question2,
-  // });
   testIndex.value += 1;
   currentItem.value =
     props.type === SECONDETYPE.small
@@ -58,12 +50,10 @@ const checkClickHandle = ({ question1 = 1, question2 = 1 } = {}) => {
 </script>
 <template>
   <div>
-    <div class="text-left">
-      <div>请选择你认为最合适的一项课程</div>
-    </div>
     <SelectImg
       :test-item="currentItem"
       :test-index="testIndex"
+      :second="second"
       @checkClickHandle="checkClickHandle"
     ></SelectImg>
   </div>

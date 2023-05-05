@@ -25,9 +25,9 @@ const showHistory = () => {
       </el-icon>
     </div>
     <div class="fixed left-10 top-2">
-      <RouterLink to="/test2-1/small/10">实验二small</RouterLink>
-      <RouterLink to="/test2-1/medium/10">实验二medium</RouterLink>
-      <RouterLink to="/test2-1/large/10">实验二large</RouterLink>
+      <RouterLink to="/test2-1/small/8">实验二small</RouterLink>
+      <RouterLink to="/test2-1/medium/8">实验二medium</RouterLink>
+      <RouterLink to="/test2-1/large/8">实验二large</RouterLink>
     </div>
     <!-- <div class="fixed right-2 bottom-2" @click="showHistory">
       <el-icon color="#409EFC">
