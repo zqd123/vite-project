@@ -17,7 +17,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
   await formEl.validate((valid, fields) => {
     if (valid) {
       experimentStore.userInfo = formLabelAlign;
-      router.push({ path: "/guidance" });
+      router.push({ path: "/seconde/guidance" });
     } else {
       console.log("error submit!", fields);
     }
@@ -27,7 +27,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
 <template>
   <div>
     <el-card class="w-96 h-72 flex justify-center items-center" shadow="always">
-      <el-icon color="#409EFC" :size="50" class="mb-8"><Grape /></el-icon>
+      <el-icon color="#409EFC" :size="50" class="mb-8"><Apple /></el-icon>
       <el-form
         ref="ruleFormRef"
         :rules="rules"

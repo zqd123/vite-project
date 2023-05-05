@@ -45,7 +45,7 @@ const ok = () => {
 <template>
   <div class="relative">
     <div class="text-left mb-4">
-      <div>请选择你认为最合适的一项课程</div>
+      <div>请点击您认为性价比最高的课程，并回答问题。</div>
     </div>
     <el-button class="absolute -top-10" type="primary" text size="large"
       >{{ countdown }} s</el-button
@@ -72,7 +72,7 @@ const ok = () => {
       :align-center="true"
       :show-close="false"
       :close-on-click-modal="false"
-      :close-on-press-escape="false"
+      :close-on-press-escape="true"
       destroy-on-close
     >
       <Question @ok="ok"></Question>
