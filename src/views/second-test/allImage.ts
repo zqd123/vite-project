@@ -27,5 +27,11 @@ const createImage = ({ type = "small", sum = 4 } = {}) => {
 };
 
 export const smallInformationImages: Image[] = createImage({ type: "small" });
-export const mediumInformationImages: Image[] = createImage({ type: "medium" });
-export const largeInformationImages: Image[] = createImage({ type: "large" });
+export const mediumInformationImages: Image[] = createImage({
+  type: "medium",
+  sum: 8,
+});
+export const largeInformationImages: Image[] = createImage({
+  type: "large",
+  sum: 16,
+});

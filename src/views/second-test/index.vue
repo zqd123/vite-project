@@ -22,17 +22,27 @@ const experimentStore = useExperimentStore();
 /**实验索引 */
 const testIndex = ref(0);
 /**当前实验项目 */
-const currentItem = ref(smallInformationImages[0]);
+const currentItem = ref();
+currentItem.value =
+  props.type === SECONDETYPE.small
+    ? smallInformationImages[testIndex.value]
+    : props.type === SECONDETYPE.medium
+    ? mediumInformationImages[testIndex.value]
+    : largeInformationImages[testIndex.value];
 /**选中正确选项回调 */
 const checkClickHandle = ({ question1 = 1, question2 = 1 } = {}) => {
+  console.log(
+    "🚀 ~ file: index.vue:29 ~ checkClickHandle ~ testIndex.value:",
+    testIndex.value
+  );
   if (testIndex.value >= 2) {
     router.push({ path: "/seconde/endTest" });
     return;
   }
-  experimentStore.checkQuestion.push({
-    question1,
-    question2,
-  });
+  // experimentStore.checkQuestion.push({
+  //   question1,
+  //   question2,
+  // });
   testIndex.value += 1;
   currentItem.value =
     props.type === SECONDETYPE.small
