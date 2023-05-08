@@ -20,7 +20,7 @@ const secondCount = computed(() => Number(props.second) - countdown.value);
 /**初始化倒计时 */
 const initSecond = () => {
   countdown.value = Number(unref(props.second));
-  interval = setInterval(() => {
+  interval = window.setInterval(() => {
     countdown.value--;
     if (countdown.value === 0) {
       clearInterval(interval);
