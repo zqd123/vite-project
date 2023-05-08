@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, unref } from "vue";
+import { computed, ref, unref } from "vue";
 import { Image } from "../first-test/allImage";
 import Question from "./Question.vue";
 const emit = defineEmits(["checkClickHandle"]);
@@ -15,14 +15,16 @@ const props = withDefaults(
 let interval = 0;
 const countdown = ref(0);
 const dialogVisible = ref(false);
+/**做出选择用时 */
+const secondCount = computed(() => Number(props.second) - countdown.value);
 /**初始化倒计时 */
 const initSecond = () => {
   countdown.value = Number(unref(props.second));
   interval = setInterval(() => {
     countdown.value--;
     if (countdown.value === 0) {
-      dialogVisible.value = true;
       clearInterval(interval);
+      dialogVisible.value = true;
     }
   }, 1000);
 };
@@ -32,8 +34,8 @@ const getAssetsFile = (url: string) => {
   return new URL(`../../assets/seconde-test/${url}`, import.meta.url).href;
 };
 const selectHandle = () => {
-  dialogVisible.value = true;
   clearInterval(interval);
+  dialogVisible.value = true;
 };
 /**答题后确认 */
 const ok = () => {
@@ -75,7 +77,7 @@ const ok = () => {
       :close-on-press-escape="true"
       destroy-on-close
     >
-      <Question @ok="ok"></Question>
+      <Question :second-count="secondCount" @ok="ok"></Question>
     </el-dialog>
   </div>
 </template>

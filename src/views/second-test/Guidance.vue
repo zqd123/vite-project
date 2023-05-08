@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { useRoute } from "vue-router";
 import router from "../../router";
+const route = useRoute();
 
 const nextStep = () => {
-  router.push({ path: "/test2-1/small/10" });
+  router.push({ path: "/seconde/test2", query: route.query });
 };
 </script>
 <template>

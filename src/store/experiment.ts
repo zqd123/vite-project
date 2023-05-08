@@ -13,6 +13,7 @@ export interface User {
 export interface CheckQuestion {
   question1: number;
   question2: number;
+  secondCount: number;
 }
 export const useExperimentStore = defineStore("experiment", {
   state: () => ({

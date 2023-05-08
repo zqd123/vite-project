@@ -48,10 +48,10 @@ const routes: RouteRecordRaw[] = [
         component: () => import("../views/second-test/Guidance.vue"),
       },
       {
-        path: "/test2-1/:type/:second",
-        name: "test2-1",
+        path: "test2",
+        name: "test2",
         component: () => import("../views/second-test/index.vue"),
-        props: true,
+        props: (route) => ({ query: route.query }),
       },
       {
         path: "endTest",

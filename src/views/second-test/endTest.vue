@@ -1,12 +1,18 @@
 <script setup lang="ts">
 import { Download } from "@element-plus/icons-vue";
 import { CheckQuestion, useExperimentStore } from "../../store/experiment";
+import router from "../../router";
 
 const experimentStore = useExperimentStore();
+sessionStorage.removeItem("userName");
+
 /**导出表格 */
 const exportTable = () => {
   console.log("导出数据");
-  download("第一个问题分数,第二个问题分数\n", experimentStore.checkQuestion);
+  download(
+    "第一个问题分数,第二个问题分数,用时（s）\n",
+    experimentStore.checkQuestion
+  );
 };
 /**下载方法 */
 const download = (str: string, data: CheckQuestion[]) => {
@@ -33,7 +39,7 @@ const download = (str: string, data: CheckQuestion[]) => {
     <div>
       <div class="flex justify-between pb-2">
         <div class="flex items-center gap-2">
-          <!-- <span>姓名：{{ experimentStore.userInfo.studyName }}</span> -->
+          <span>姓名：{{ experimentStore.userInfo.studyName }}</span>
         </div>
         <el-button type="primary" @click="exportTable">
           <el-icon><Download /></el-icon>
@@ -47,11 +53,13 @@ const download = (str: string, data: CheckQuestion[]) => {
         :border="true"
         center
       >
-        <el-table-column type="index" label="序号" width="100">
-        </el-table-column>
+        <!-- <el-table-column type="index" label="序号" width="100">
+        </el-table-column> -->
         <el-table-column prop="question1" label="第一个问题分数">
         </el-table-column>
         <el-table-column prop="question2" label="第二个问题分数">
+        </el-table-column>
+        <el-table-column prop="secondCount" label="用时（s）">
         </el-table-column>
       </el-table>
     </div>

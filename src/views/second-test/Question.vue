@@ -3,13 +3,9 @@ import { FormInstance, FormRules } from "element-plus";
 import { reactive, ref } from "vue";
 import { useExperimentStore } from "../../store/experiment";
 const emit = defineEmits(["ok"]);
+const props = defineProps(["secondCount"]);
 const experimentStore = useExperimentStore();
 const ruleFormRef = ref<FormInstance>();
-const radio1 = ref(0);
-const radio2 = ref(0);
-const radioChange = (val: string) => {
-  console.log("🚀 ~ file: Question.vue:7 ~ radio1Change ~ val:", val);
-};
 const ruleForm = reactive({
   radio1: undefined,
   radio2: undefined,
@@ -25,6 +21,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
       experimentStore.checkQuestion.push({
         question1: ruleForm.radio1 ?? 0,
         question2: ruleForm.radio2 ?? 0,
+        secondCount: props.secondCount,
       });
       emit("ok");
     } else {

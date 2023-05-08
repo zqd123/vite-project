@@ -24,7 +24,11 @@ const showHistory = () => {
     </div> -->
     <div class="fixed left-2 top-2">
       <RouterLink to="/first">实验一</RouterLink>
-      <RouterLink to="/seconde">实验二</RouterLink>
+
+      <RouterLink
+        to="/seconde/test2?customType=small&customIndex=1&customSecond=10"
+        >实验二small</RouterLink
+      >
       <!-- <RouterLink to="/test2-1/small/8">实验二small</RouterLink>
       <RouterLink to="/test2-1/medium/8">实验二medium</RouterLink>
       <RouterLink to="/test2-1/large/8">实验二large</RouterLink> -->

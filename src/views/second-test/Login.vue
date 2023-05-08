@@ -3,6 +3,8 @@ import { reactive, ref } from "vue";
 import router from "../../router";
 import type { FormInstance, FormRules } from "element-plus";
 import { useExperimentStore } from "../../store/experiment";
+import { useRoute } from "vue-router";
+const route = useRoute();
 const experimentStore = useExperimentStore();
 const labelPosition = ref("right");
 const ruleFormRef = ref<FormInstance>();
@@ -16,8 +18,9 @@ const submitForm = async (formEl: FormInstance | undefined) => {
   if (!formEl) return;
   await formEl.validate((valid, fields) => {
     if (valid) {
+      sessionStorage.setItem("userName", formLabelAlign.studyName);
       experimentStore.userInfo = formLabelAlign;
-      router.push({ path: "/seconde/guidance" });
+      router.push({ path: "/seconde/guidance", query: route.query });
     } else {
       console.log("error submit!", fields);
     }
