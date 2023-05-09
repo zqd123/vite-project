@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { Download } from "@element-plus/icons-vue";
+import { Download, Refresh } from "@element-plus/icons-vue";
 import { Experiment, useExperimentStore } from "../../store/experiment";
 
 const experimentStore = useExperimentStore();
+sessionStorage.removeItem("userName");
 experimentStore.userInfo.experimentData = experimentStore.experimentData;
 experimentStore.saveStoreLocal();
 /**导出表格 */
@@ -65,6 +66,12 @@ const download = (str: string, data: Experiment[]) => {
         <el-table-column prop="errorSelectSum" label="错误次数">
         </el-table-column>
       </el-table>
+    </div>
+
+    <div class="fixed right-2 bottom-2" @click="$router.go(0)">
+      <el-button type="primary" :icon="Refresh" size="small"
+        >重新开始</el-button
+      >
     </div>
   </div>
 </template>

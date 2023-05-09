@@ -6,7 +6,7 @@ const stepNum = ref(0);
 const nextStep = () => {
   if (stepNum.value >= 2) {
     // router.push({ path: "/welcome" });
-    router.push({ path: "test1-loading" });
+    router.push({ path: "test1" });
   }
   stepNum.value++;
 };

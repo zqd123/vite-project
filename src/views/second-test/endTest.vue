@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Download } from "@element-plus/icons-vue";
+import { Download, Refresh } from "@element-plus/icons-vue";
 import { CheckQuestion, useExperimentStore } from "../../store/experiment";
 import router from "../../router";
 
@@ -62,6 +62,12 @@ const download = (str: string, data: CheckQuestion[]) => {
         <el-table-column prop="secondCount" label="用时（s）">
         </el-table-column>
       </el-table>
+    </div>
+
+    <div class="fixed right-2 bottom-2" @click="$router.go(0)">
+      <el-button type="primary" :icon="Refresh" size="small"
+        >重新开始</el-button
+      >
     </div>
   </div>
 </template>

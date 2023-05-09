@@ -11,6 +11,12 @@ router.beforeEach((to, from) => {
     !sessionStorage.getItem("userName")
   ) {
     return { path: "/seconde/login", query: to.query };
+  } else if (
+    to.path.includes("/first") &&
+    to.path !== "/first/login" &&
+    !sessionStorage.getItem("userName")
+  ) {
+    return { path: "/first/login", query: to.query };
   } else {
     return true;
   }

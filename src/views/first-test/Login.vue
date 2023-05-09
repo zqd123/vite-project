@@ -21,8 +21,9 @@ const submitForm = async (formEl: FormInstance | undefined) => {
   if (!formEl) return;
   await formEl.validate((valid, fields) => {
     if (valid) {
+      sessionStorage.setItem("userName", formLabelAlign.studyName);
       experimentStore.userInfo = formLabelAlign;
-      router.push({ path: "/guidance" });
+      router.push({ path: "/first/guidance" });
     } else {
       console.log("error submit!", fields);
     }

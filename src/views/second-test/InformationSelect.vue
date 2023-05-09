@@ -81,11 +81,3 @@ const ok = () => {
     </el-dialog>
   </div>
 </template>
-<style scoped>
-img {
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 100%;
-}
-</style>

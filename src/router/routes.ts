@@ -15,18 +15,13 @@ const routes: RouteRecordRaw[] = [
         component: () => import("../views/first-test/Login.vue"),
       },
       {
-        path: "/guidance",
+        path: "guidance",
         name: "guidance",
         component: () => import("../views/first-test/Guidance.vue"),
       },
       {
-        path: "/welcome",
-        name: "welcome",
-        component: () => import("../views/first-test/Welcome.vue"),
-      },
-      {
-        path: "/test1-loading",
-        name: "test1-loading",
+        path: "test1",
+        name: "test1",
         component: () => import("../views/first-test/TestPage.vue"),
       },
     ],
