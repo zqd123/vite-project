@@ -56,13 +56,13 @@ const ok = () => {
       <div
         v-for="item in testItem.children"
         :key="item.url"
-        class="w-40 h-36 p-2 bg-white flex justify-center items-center border-2 rounded-xl overflow-hidden"
+        class="w-52 h-52 p-2 bg-white flex justify-center items-center border-2 rounded-xl overflow-hidden"
         :class="item.selectedColor"
         @click="selectHandle"
       >
         <img
           class="w-auto h-auto max-h-full max-w-full"
-          :src="getAssetsFile(item.url + '.png')"
+          :src="getAssetsFile(item.url + '.jpg')"
         />
       </div>
     </div>
@@ -81,3 +81,11 @@ const ok = () => {
     </el-dialog>
   </div>
 </template>
+<style scoped>
+img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+</style>

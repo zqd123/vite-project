@@ -10,22 +10,28 @@ import { SECONDETYPE } from "./commonEnum";
 import router from "../../router";
 import { useRoute } from "vue-router";
 const route = useRoute();
-const props = reactive({
-  type: route.query.customType as string,
-  index: route.query.customIndex,
+const customQuery = reactive({
+  type: (route.query.customType as string) ?? "small",
+  index: route.query.customIndex ?? "3",
   second: (route.query.customSecond as string) ?? "8",
 });
 
-console.log("🚀 ~ file: index.vue:11 ~ props ~ props:", props);
+console.log(
+  "🚀 ~ file: index.vue:11 ~ customQuery ~ customQuery:",
+  customQuery
+);
 // const experimentStore = useExperimentStore();
 /**实验索引 */
-const testIndex = ref(Number(props.index) - 1);
+const testIndex = ref(Number(customQuery.index) - 3);
+if (testIndex.value < 0) {
+  testIndex.value = 0;
+}
 /**当前实验项目 */
 const currentItem = ref();
 currentItem.value =
-  props.type === SECONDETYPE.small
+  customQuery.type === SECONDETYPE.small
     ? smallInformationImages[testIndex.value]
-    : props.type === SECONDETYPE.medium
+    : customQuery.type === SECONDETYPE.medium
     ? mediumInformationImages[testIndex.value]
     : largeInformationImages[testIndex.value];
 /**选中正确选项回调 */
@@ -37,9 +43,9 @@ const checkClickHandle = () => {
   // }
   // testIndex.value += 1;
   // currentItem.value =
-  //   props.type === SECONDETYPE.small
+  //   customQuery.type === SECONDETYPE.small
   //     ? smallInformationImages[testIndex.value]
-  //     : props.type === SECONDETYPE.medium
+  //     : customQuery.type === SECONDETYPE.medium
   //     ? mediumInformationImages[testIndex.value]
   //     : largeInformationImages[testIndex.value];
   // console.log(
@@ -53,7 +59,7 @@ const checkClickHandle = () => {
     <SelectImg
       :test-item="currentItem"
       :test-index="testIndex"
-      :second="props.second"
+      :second="customQuery.second"
       @checkClickHandle="checkClickHandle"
     ></SelectImg>
   </div>
