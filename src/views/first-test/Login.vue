@@ -44,6 +44,7 @@ const getAssetsFile = (url: string) => {
         :rules="rules"
         :label-position="labelPosition"
         :model="formLabelAlign"
+        @submit.prevent
       >
         <!-- <el-form-item label="学号" prop="studyCode">
           <el-input v-model="formLabelAlign.studyCode" />
