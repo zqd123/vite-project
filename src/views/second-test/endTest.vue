@@ -10,7 +10,7 @@ sessionStorage.removeItem("userName");
 const exportTable = () => {
   console.log("导出数据");
   download(
-    "第一个问题分数,第二个问题分数,用时（s）\n",
+    "第一个问题选项,第二个问题选项,用时（s）\n",
     experimentStore.checkQuestion
   );
 };

@@ -46,17 +46,31 @@ const ok = () => {
 </script>
 <template>
   <div class="relative">
-    <div class="text-left mb-4">
+    <div class="fixed top-0 left-0">
+      <RouterLink
+        to="/seconde/test2?customType=small&customIndex=3&customSecond=8"
+        >small</RouterLink
+      ><br />
+      <RouterLink
+        to="/seconde/test2?customType=medium&customIndex=3&customSecond=10"
+        >medium</RouterLink
+      ><br />
+      <RouterLink
+        to="/seconde/test2?customType=large&customIndex=3&customSecond=20"
+        >large</RouterLink
+      >
+    </div>
+    <div class="mb-4">
       <div>请点击您认为性价比最高的课程，并回答问题。</div>
     </div>
     <el-button class="absolute -top-10" type="primary" text size="large"
-      >{{ countdown }} s</el-button
+      ><span class="text-lg">{{ countdown }} s</span></el-button
     >
-    <div class="flex flex-wrap gap-2">
+    <div class="flex flex-wrap justify-center gap-2">
       <div
         v-for="item in testItem.children"
         :key="item.url"
-        class="w-52 h-52 p-2 bg-white flex justify-center items-center border-2 rounded-xl overflow-hidden"
+        class="w-60 h-60 bg-white flex justify-center items-center overflow-hidden"
         :class="item.selectedColor"
         @click="selectHandle"
       >
