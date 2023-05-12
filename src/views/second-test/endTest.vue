@@ -1,42 +1,33 @@
 <script setup lang="ts">
 import { Refresh } from "@element-plus/icons-vue";
-import { CheckQuestion, useExperimentStore } from "../../store/experiment";
+import { useExperimentStore } from "../../store/experiment";
 import axios from "axios";
+import { ElMessageBox } from "element-plus";
+import router from "../../router";
+import { useRoute } from "vue-router";
+const route = useRoute();
 const experimentStore = useExperimentStore();
 sessionStorage.removeItem("userName");
 
 /**保存上传数据 */
 const saveTableData = () => {
   const obj = experimentStore.checkQuestion[0];
-  axios.post("http://127.0.0.1:5173/api/add_user", {
-    ...obj,
-  });
-};
-/**导出表格 */
-const exportTable = () => {
-  console.log("导出数据");
-  download(
-    "第一个问题选项,第二个问题选项,用时（s）\n",
-    experimentStore.checkQuestion
-  );
-};
-/**下载方法 */
-const download = (str: string, data: CheckQuestion[]) => {
-  // 增加\t为了不让表格显示科学计数法或者其他格式
-  for (let i = 0; i < data.length; i++) {
-    for (const key in data[i]) {
-      str += `${data[i][key as keyof CheckQuestion] + "\t"},`;
-    }
-    str += "\n";
-  }
-  // encodeURIComponent解决中文乱码
-  const uri = "data:text/csv;charset=utf-8,\ufeff" + encodeURIComponent(str);
-  // 通过创建a标签实现
-  const link = document.createElement("a");
-  link.href = uri;
-  // 对下载的文件命名
-  link.download = experimentStore.userInfo.studyName ?? "export" + ".csv";
-  link.click();
+  // axios.post("http://127.0.0.1:5173/api/add_user", {
+  //   ...obj,
+  // });
+  axios
+    .post("http://127.0.0.1:3000/add_user", {
+      ...obj,
+    })
+    .then((res) => {
+      ElMessageBox.alert(res.data.data.message ?? "保存成功", "提示", {
+        confirmButtonText: "确定",
+        callback: () => {
+          experimentStore.checkQuestion = [];
+          router.push({ path: "/seconde/test2", query: route.query });
+        },
+      });
+    });
 };
 </script>
 <template>
@@ -45,12 +36,8 @@ const download = (str: string, data: CheckQuestion[]) => {
     <div>
       <div class="flex justify-between pb-2">
         <div class="flex items-center gap-2">
-          <span>姓名：{{ experimentStore.userInfo.studyName }}</span>
+          <!-- <span>姓名：{{ experimentStore.userInfo.studyName }}</span> -->
         </div>
-        <!-- <el-button type="primary" @click="exportTable">
-          <el-icon><Download /></el-icon>
-          <span class="pl-1">导出数据</span>
-        </el-button> -->
         <el-button type="success" @click.once="saveTableData">
           <el-icon><Check /></el-icon>
           <span class="pl-1">保存数据</span>
@@ -75,10 +62,10 @@ const download = (str: string, data: CheckQuestion[]) => {
       </el-table>
     </div>
 
-    <div class="fixed right-2 bottom-2" @click="$router.go(0)">
+    <!-- <div class="fixed right-2 bottom-2" @click="$router.go(0)">
       <el-button type="primary" :icon="Refresh" size="small"
         >重新开始</el-button
       >
-    </div>
+    </div> -->
   </div>
 </template>
