@@ -1,11 +1,6 @@
 <script setup lang="ts">
-import { Download, Refresh } from "@element-plus/icons-vue";
-import {
-  CheckQuestion,
-  Experiment,
-  useExperimentStore,
-} from "../../store/experiment";
-import router from "../../router";
+import { Refresh } from "@element-plus/icons-vue";
+import { CheckQuestion, useExperimentStore } from "../../store/experiment";
 import axios from "axios";
 const experimentStore = useExperimentStore();
 sessionStorage.removeItem("userName");
