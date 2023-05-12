@@ -1,13 +1,26 @@
 <script setup lang="ts">
 import axios from "axios";
+import { ElMessage, ElMessageBox } from "element-plus";
 import { ref } from "vue";
 import { CheckQuestion, useExperimentStore } from "../../store/experiment";
 const experimentStore = useExperimentStore();
 const tableData = ref();
-axios.get("https://80e21bb.r1.cpolar.top/get_user").then((res) => {
-  console.log("value", res.data);
-  tableData.value = res.data.data;
-});
+const loading = ref(false);
+const getTableData = () => {
+  loading.value = true;
+  axios
+    .get("https://80e21bb.r1.cpolar.top/get_user")
+    .then((res) => {
+      loading.value = false;
+      console.log("value", res.data);
+      tableData.value = res.data.data;
+      ElMessage.success("获取数据成功");
+    })
+    .catch((e) => {
+      ElMessage.error("获取数据失败，请重试！");
+    });
+};
+getTableData();
 /**导出表格 */
 const exportTable = () => {
   console.log("导出数据");
@@ -36,8 +49,12 @@ const download = (str: string, data: CheckQuestion[]) => {
 };
 </script>
 <template>
-  <div>
-    <div class="m-2 flex justify-end">
+  <div v-loading="loading">
+    <div class="m-2 flex justify-between">
+      <el-button type="success" @click="getTableData">
+        <el-icon><Check /></el-icon>
+        <span class="pl-1">获取数据</span>
+      </el-button>
       <el-button type="primary" @click="exportTable">
         <el-icon><Download /></el-icon>
         <span class="pl-1">导出数据</span>
@@ -54,7 +71,7 @@ const download = (str: string, data: CheckQuestion[]) => {
       <el-table-column prop="name" label="姓名" width="150" />
       <el-table-column prop="question1" label="问题一选项" width="150" />
       <el-table-column prop="question2" label="问题二选项" width="150" />
-      <el-table-column prop="secondCount" label="用时" width="150" />
+      <el-table-column prop="secondCount" label="用时(s)" width="150" />
     </el-table>
   </div>
 </template>
