@@ -16,7 +16,7 @@ const saveTableData = () => {
   //   ...obj,
   // });
   axios
-    .post("http://127.0.0.1:3000/add_user", {
+    .post("http://80e21bb.r1.cpolar.top/add_user", {
       ...obj,
     })
     .then((res) => {
