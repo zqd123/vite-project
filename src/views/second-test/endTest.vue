@@ -5,9 +5,11 @@ import axios from "axios";
 import { ElMessageBox } from "element-plus";
 import router from "../../router";
 import { useRoute } from "vue-router";
+import { ref } from "vue";
 const route = useRoute();
 const experimentStore = useExperimentStore();
 sessionStorage.removeItem("userName");
+const saveLoading = ref(false);
 
 /**保存上传数据 */
 const saveTableData = () => {
@@ -15,17 +17,24 @@ const saveTableData = () => {
   // axios.post("http://127.0.0.1:5173/api/add_user", {
   //   ...obj,
   // });
+  saveLoading.value = true;
   axios
     .post("https://80e21bb.r1.cpolar.top/add_user", {
       ...obj,
     })
     .then((res) => {
+      saveLoading.value = false;
       ElMessageBox.alert(res.data.data.message ?? "保存成功", "提示", {
         confirmButtonText: "确定",
         callback: () => {
           experimentStore.checkQuestion = [];
           router.push({ path: "/seconde/test2", query: route.query });
         },
+      });
+    })
+    .catch((e) => {
+      ElMessageBox.alert("保存失败", "提示", {
+        confirmButtonText: "确定",
       });
     });
 };
@@ -38,8 +47,11 @@ const saveTableData = () => {
         <div class="flex items-center gap-2">
           <!-- <span>姓名：{{ experimentStore.userInfo.studyName }}</span> -->
         </div>
-        <el-button type="success" @click.once="saveTableData">
-          <el-icon><Check /></el-icon>
+        <el-button
+          type="success"
+          :loading="saveLoading"
+          @click.once="saveTableData"
+        >
           <span class="pl-1">保存数据</span>
         </el-button>
       </div>
@@ -53,9 +65,9 @@ const saveTableData = () => {
         <el-table-column type="index" label="序号" width="100">
         </el-table-column>
         <el-table-column prop="name" label="姓名"> </el-table-column>
-        <el-table-column prop="question1" label="第一个问题分数">
+        <el-table-column prop="question1" label="第一个问题选项">
         </el-table-column>
-        <el-table-column prop="question2" label="第二个问题分数">
+        <el-table-column prop="question2" label="第二个问题选项">
         </el-table-column>
         <el-table-column prop="secondCount" label="用时（s）">
         </el-table-column>

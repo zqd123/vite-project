@@ -46,7 +46,7 @@ const ok = () => {
 </script>
 <template>
   <div class="relative">
-    <div class="fixed top-0 left-0">
+    <!-- <div class="fixed top-0 left-0">
       <RouterLink
         to="/seconde/test2?customType=small&customIndex=3&customSecond=8"
         >small</RouterLink
@@ -59,7 +59,7 @@ const ok = () => {
         to="/seconde/test2?customType=large&customIndex=3&customSecond=20"
         >large</RouterLink
       >
-    </div>
+    </div> -->
     <div class="mb-4">
       <div>请点击您认为性价比最高的课程，并回答问题。</div>
     </div>
@@ -84,7 +84,7 @@ const ok = () => {
     <el-dialog
       v-model="dialogVisible"
       title="请选择"
-      width="90%"
+      width="60%"
       :align-center="true"
       :show-close="false"
       :close-on-click-modal="false"
