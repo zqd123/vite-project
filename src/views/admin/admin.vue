@@ -4,7 +4,7 @@ import { ref } from "vue";
 import { CheckQuestion, useExperimentStore } from "../../store/experiment";
 const experimentStore = useExperimentStore();
 const tableData = ref();
-axios.get("api/get_user").then((res) => {
+axios.get("https://80e21bb.r1.cpolar.top/get_user").then((res) => {
   console.log("value", res.data);
   tableData.value = res.data.data;
 });
