@@ -1,11 +1,22 @@
 <script setup lang="ts">
 import { Download, Refresh } from "@element-plus/icons-vue";
-import { CheckQuestion, useExperimentStore } from "../../store/experiment";
+import {
+  CheckQuestion,
+  Experiment,
+  useExperimentStore,
+} from "../../store/experiment";
 import router from "../../router";
-
+import axios from "axios";
 const experimentStore = useExperimentStore();
 sessionStorage.removeItem("userName");
 
+/**保存上传数据 */
+const saveTableData = () => {
+  const obj = experimentStore.checkQuestion[0];
+  axios.post("http://127.0.0.1:5173/api/add_user", {
+    ...obj,
+  });
+};
 /**导出表格 */
 const exportTable = () => {
   console.log("导出数据");
@@ -41,9 +52,13 @@ const download = (str: string, data: CheckQuestion[]) => {
         <div class="flex items-center gap-2">
           <span>姓名：{{ experimentStore.userInfo.studyName }}</span>
         </div>
-        <el-button type="primary" @click="exportTable">
+        <!-- <el-button type="primary" @click="exportTable">
           <el-icon><Download /></el-icon>
           <span class="pl-1">导出数据</span>
+        </el-button> -->
+        <el-button type="success" @click.once="saveTableData">
+          <el-icon><Check /></el-icon>
+          <span class="pl-1">保存数据</span>
         </el-button>
       </div>
       <el-table
@@ -53,8 +68,9 @@ const download = (str: string, data: CheckQuestion[]) => {
         :border="true"
         center
       >
-        <!-- <el-table-column type="index" label="序号" width="100">
-        </el-table-column> -->
+        <el-table-column type="index" label="序号" width="100">
+        </el-table-column>
+        <el-table-column prop="name" label="姓名"> </el-table-column>
         <el-table-column prop="question1" label="第一个问题分数">
         </el-table-column>
         <el-table-column prop="question2" label="第二个问题分数">

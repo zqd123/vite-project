@@ -19,6 +19,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
   await formEl.validate((valid, fields) => {
     if (valid) {
       experimentStore.checkQuestion.push({
+        name: sessionStorage.getItem("userName") ?? "",
         question1: ruleForm.radio1 ?? 0,
         question2: ruleForm.radio2 ?? 0,
         secondCount: props.secondCount,

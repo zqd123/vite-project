@@ -5,6 +5,11 @@ const routes: RouteRecordRaw[] = [
     redirect: "first",
   },
   {
+    path: "/admin",
+    name: "admin",
+    component: () => import("../views/admin/admin.vue"),
+  },
+  {
     path: "/first",
     name: "home",
     redirect: "/first/login",

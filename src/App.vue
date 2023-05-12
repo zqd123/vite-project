@@ -4,14 +4,14 @@ import { useExperimentStore } from "./store/experiment";
 const experimentStore = useExperimentStore();
 
 /**阻止关闭刷新页面 */
-window.addEventListener("beforeunload", (e) => {
-  e.preventDefault();
-  e.returnValue = "";
-});
+// window.addEventListener("beforeunload", (e) => {
+//   e.preventDefault();
+//   e.returnValue = "";
+// });
 /**页面加载后,删除userName */
-window.onunload = function () {
-  sessionStorage.removeItem("userName");
-};
+// window.onunload = function () {
+//   sessionStorage.removeItem("userName");
+// };
 </script>
 
 <template>

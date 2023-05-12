@@ -11,6 +11,7 @@ export interface User {
   experimentData?: Experiment[];
 }
 export interface CheckQuestion {
+  name: string;
   question1: number;
   question2: number;
   secondCount: number;
