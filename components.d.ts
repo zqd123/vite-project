@@ -18,6 +18,7 @@ declare module "@vue/runtime-core" {
     ElInput: typeof import("element-plus/es")["ElInput"];
     ElRadio: typeof import("element-plus/es")["ElRadio"];
     ElRadioGroup: typeof import("element-plus/es")["ElRadioGroup"];
+    ElRate: typeof import("element-plus/es")["ElRate"];
     ElTable: typeof import("element-plus/es")["ElTable"];
     ElTableColumn: typeof import("element-plus/es")["ElTableColumn"];
     HelloWorld: typeof import("./src/components/HelloWorld.vue")["default"];

@@ -1,29 +1,67 @@
 <script setup lang="ts">
-import { FormInstance, FormRules } from "element-plus";
+import { ElMessage, FormInstance, FormRules } from "element-plus";
 import { reactive, ref } from "vue";
 import { useExperimentStore } from "../../store/experiment";
 const emit = defineEmits(["ok"]);
-const props = defineProps(["secondCount"]);
+const props = defineProps<{
+  secondCount: number;
+}>();
 const experimentStore = useExperimentStore();
 const ruleFormRef = ref<FormInstance>();
 const ruleForm = reactive({
-  radio1: undefined,
-  radio2: undefined,
+  radio1_1: undefined,
+  radio1_2: undefined,
+  radio1_3: undefined,
+  radio1_4: undefined,
+  radio1_5: undefined,
+  radio1_6: undefined,
+  radio1_7: undefined,
+  radio2_1: undefined,
+  radio2_2: undefined,
+  radio2_3: undefined,
+  radio2_4: undefined,
+  radio2_5: undefined,
 });
 const rules = reactive<FormRules>({
-  radio1: [{ required: true, message: "请选择", trigger: "change" }],
-  radio2: [{ required: true, message: "请选择", trigger: "change" }],
+  radio1_1: [{ required: true, message: "请选择", trigger: "change" }],
+  radio1_2: [{ required: true, message: "请选择", trigger: "change" }],
+  radio1_3: [{ required: true, message: "请选择", trigger: "change" }],
+  radio1_4: [{ required: true, message: "请选择", trigger: "change" }],
+  radio1_5: [{ required: true, message: "请选择", trigger: "change" }],
+  radio1_6: [{ required: true, message: "请选择", trigger: "change" }],
+  radio1_7: [{ required: true, message: "请选择", trigger: "change" }],
+  radio2_1: [{ required: true, message: "请选择", trigger: "change" }],
+  radio2_2: [{ required: true, message: "请选择", trigger: "change" }],
+  radio2_3: [{ required: true, message: "请选择", trigger: "change" }],
+  radio2_4: [{ required: true, message: "请选择", trigger: "change" }],
+  radio2_5: [{ required: true, message: "请选择", trigger: "change" }],
 });
 const submitForm = async (formEl: FormInstance | undefined) => {
   if (!formEl) return;
   await formEl.validate((valid, fields) => {
     if (valid) {
-      experimentStore.checkQuestion.push({
+      for (const [key, value] of Object.entries(ruleForm)) {
+        if (!value) {
+          ElMessage.error("请为每一项做出选择！");
+          return;
+        }
+      }
+      experimentStore.radiosData = {
         name: sessionStorage.getItem("userName") ?? "",
-        question1: ruleForm.radio1 ?? 0,
-        question2: ruleForm.radio2 ?? 0,
+        radio1_1: ruleForm.radio1_1,
+        radio1_2: ruleForm.radio1_2,
+        radio1_3: ruleForm.radio1_3,
+        radio1_4: ruleForm.radio1_4,
+        radio1_5: ruleForm.radio1_5,
+        radio1_6: ruleForm.radio1_6,
+        radio1_7: ruleForm.radio1_7,
+        radio2_1: ruleForm.radio2_1,
+        radio2_2: ruleForm.radio2_2,
+        radio2_3: ruleForm.radio2_3,
+        radio2_4: ruleForm.radio2_4,
+        radio2_5: ruleForm.radio2_5,
         secondCount: props.secondCount,
-      });
+      };
       emit("ok");
     } else {
       console.log("error submit!", fields);
@@ -38,107 +76,69 @@ const submitForm = async (formEl: FormInstance | undefined) => {
       :model="ruleForm"
       :rules="rules"
       status-icon
-      label-position="top"
+      label-position="right"
     >
-      <el-form-item label="问题一: 感知选择过载" prop="radio1">
-        <el-radio-group
-          v-model="ruleForm.radio1"
-          class="flex flex-col !items-start"
-        >
-          <el-radio :label="1" size="large"
-            >1.“有太多不同的选择需要考虑”</el-radio
-          >
-          <el-radio :label="2" size="large"
-            >2.“这个决定需要大量的思考”</el-radio
-          >
-          <el-radio :label="3" size="large">3.“这是一个艰难的决定”</el-radio>
-          <el-radio :label="4" size="large"
-            >4.“我发现这个决定让人不知所措”</el-radio
-          >
-          <el-radio :label="5" size="large"
-            >5.“我很难理解所有可用的信息”</el-radio
-          >
-          <el-radio :label="6" size="large">6.“任务很有压力”</el-radio>
-          <el-radio :label="7" size="large"
-            >7.“做出决定让我松了一口气”</el-radio
-          >
-        </el-radio-group>
+      <div class="flex justify-start font-bold">问题一: 感知选择过载</div>
+      <el-form-item label="1.“有太多不同的选择需要考虑”" prop="radio1_1">
+        <el-rate v-model="ruleForm.radio1_1" :max="7" clearable />
       </el-form-item>
-      <el-form-item label="问题二: 决策信心" prop="radio2">
-        <el-radio-group
-          v-model="ruleForm.radio2"
-          class="flex flex-col !items-start"
-        >
-          <el-radio :label="1" size="large"
-            >1.“我 100%相信我的选择在客观上比课程网站上的其他选择好”</el-radio
-          >
-          <el-radio :label="2" size="large"
-            >2.“我不确定我的选择是否客观上比其他选择好”</el-radio
-          >
-          <el-radio :label="3" size="large"
-            >3.“我确信我的选择是我能做出的最好的选择”</el-radio
-          >
-          <el-radio :label="4" size="large"
-            >4.“不管我对我的选择有什么个人感受，很明显我的选择在客观上优于网站上的其他课程选择”</el-radio
-          >
-          <el-radio :label="5" size="large"
-            >5.“即使我的朋友可能不同意，我的选择也是最好的选择”</el-radio
-          >
-        </el-radio-group>
+      <el-form-item label="2.“这个决定需要大量的思考”" prop="radio1_2">
+        <el-rate v-model="ruleForm.radio1_2" :max="7" />
       </el-form-item>
+      <el-form-item label="3.“这是一个艰难的决定”" prop="radio1_3">
+        <el-rate v-model="ruleForm.radio1_3" :max="7" />
+      </el-form-item>
+      <el-form-item label="4.“我发现这个决定让人不知所措”" prop="radio1_4">
+        <el-rate v-model="ruleForm.radio1_4" :max="7" />
+      </el-form-item>
+      <el-form-item label="5.“我很难理解所有可用的信息”" prop="radio1_5">
+        <el-rate v-model="ruleForm.radio1_5" :max="7" />
+      </el-form-item>
+      <el-form-item label="6.“任务很有压力”" prop="radio1_6">
+        <el-rate v-model="ruleForm.radio1_6" :max="7" />
+      </el-form-item>
+      <el-form-item label="7.“做出决定让我松了一口气”" prop="radio1_7">
+        <el-rate v-model="ruleForm.radio1_7" :max="7" />
+      </el-form-item>
+
+      <div class="flex justify-start font-bold">问题二: 决策信心</div>
+      <el-form-item
+        label="1.“我 100%相信我的选择在客观上比课程网站上的其他选择好””"
+        prop="radio2_1"
+      >
+        <el-rate v-model="ruleForm.radio2_1" :max="7" clearable />
+      </el-form-item>
+      <el-form-item
+        label="2.“我不确定我的选择是否客观上比其他选择好”"
+        prop="radio2_2"
+      >
+        <el-rate v-model="ruleForm.radio2_2" :max="7" />
+      </el-form-item>
+      <el-form-item
+        label="3.“我确信我的选择是我能做出的最好的选择”"
+        prop="radio2_3"
+      >
+        <el-rate v-model="ruleForm.radio2_3" :max="7" />
+      </el-form-item>
+      <el-form-item
+        label="4.“不管我对我的选择有什么个人感受，很明显我的选择在客观上优于网站上的其他课程选择”"
+        prop="radio2_4"
+      >
+        <el-rate v-model="ruleForm.radio2_4" :max="7" />
+      </el-form-item>
+      <el-form-item
+        label="5.“即使我的朋友可能不同意，我的选择也是最好的选择”"
+        prop="radio2_5"
+      >
+        <el-rate v-model="ruleForm.radio2_5" :max="7" />
+      </el-form-item>
+
       <el-form-item>
         <el-button type="primary" @click="submitForm(ruleFormRef)">
           确 定
         </el-button>
       </el-form-item>
     </el-form>
-    <!-- <div>
-      <div class="flex justify-start">问题一:感知选择过载</div>
-      <el-radio-group
-        v-model="radio1"
-        class="flex flex-col !items-start"
-        @change="radioChange"
-      >
-        <el-radio :label="1" size="large"
-          >1.“有太多不同的选择需要考虑”</el-radio
-        >
-        <el-radio :label="2" size="large">2.“这个决定需要大量的思考”</el-radio>
-        <el-radio :label="3" size="large">3.“这是一个艰难的决定”</el-radio>
-        <el-radio :label="4" size="large"
-          >4.“我发现这个决定让人不知所措”</el-radio
-        >
-        <el-radio :label="5" size="large"
-          >5.“我很难理解所有可用的信息”</el-radio
-        >
-        <el-radio :label="6" size="large">6.“任务很有压力”</el-radio>
-        <el-radio :label="7" size="large">7.“做出决定让我松了一口气”</el-radio>
-      </el-radio-group>
-    </div>
-
-    <div>
-      <div class="flex justify-start">问题二:决策信心</div>
-      <el-radio-group
-        v-model="radio2"
-        class="flex flex-col !items-start"
-        @change="radioChange"
-      >
-        <el-radio :label="1" size="large"
-          >1.“我 100%相信我的选择在客观上比课程网站上的其他选择好”</el-radio
-        >
-        <el-radio :label="2" size="large"
-          >2.“我不确定我的选择是否客观上比其他选择好”</el-radio
-        >
-        <el-radio :label="3" size="large"
-          >3.“我确信我的选择是我能做出的最好的选择”</el-radio
-        >
-        <el-radio :label="4" size="large"
-          >4.“不管我对我的选择有什么个人感受，很明显我的选择在客观上优于网站上的其他课程选择”</el-radio
-        >
-        <el-radio :label="5" size="large"
-          >5.“即使我的朋友可能不同意，我的选择也是最好的选择”</el-radio
-        >
-      </el-radio-group>
-    </div> -->
   </div>
 </template>
 <style scoped></style>

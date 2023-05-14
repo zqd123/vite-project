@@ -25,7 +25,7 @@ getTableData();
 const exportTable = () => {
   console.log("导出数据");
   download(
-    "id,姓名,第一个问题选项,第二个问题选项,用时（s）\n",
+    "id,姓名,问题,项1,项2,项3,项4,项5,项6,项7,问题,项1,项2,项3,项4,项5,用时（s）\n",
     tableData.value
   );
 };
@@ -34,7 +34,19 @@ const download = (str: string, data: CheckQuestion[]) => {
   // 增加\t为了不让表格显示科学计数法或者其他格式
   for (let i = 0; i < data.length; i++) {
     for (const key in data[i]) {
-      str += `${data[i][key as keyof CheckQuestion] + "\t"},`;
+      if (key === "question1") {
+        str += "问题一" + "\t,";
+        str += data[i].question1
+          .split(",")
+          .reduce((total, item) => (total += item + "\t,"), "");
+      } else if (key === "question2") {
+        str += "问题二" + "\t,";
+        str += data[i].question2
+          .split(",")
+          .reduce((total, item) => (total += item + "\t,"), "");
+      } else {
+        str += `${data[i][key as keyof CheckQuestion] + "\t"},`;
+      }
     }
     str += "\n";
   }
@@ -69,8 +81,8 @@ const download = (str: string, data: CheckQuestion[]) => {
       <!-- <el-table-column type="index" label="序号" width="80" /> -->
       <el-table-column prop="id" label="id" />
       <el-table-column prop="name" label="姓名" width="150" />
-      <el-table-column prop="question1" label="问题一选项" width="150" />
-      <el-table-column prop="question2" label="问题二选项" width="150" />
+      <el-table-column prop="question1" label="问题一" width="150" />
+      <el-table-column prop="question2" label="问题二" width="150" />
       <el-table-column prop="secondCount" label="用时(s)" width="150" />
     </el-table>
   </div>

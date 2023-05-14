@@ -12,8 +12,24 @@ export interface User {
 }
 export interface CheckQuestion {
   name: string;
-  question1: number;
-  question2: number;
+  question1: string;
+  question2: string;
+  secondCount: number;
+}
+export interface Radios {
+  name: string;
+  radio1_1?: number;
+  radio1_2?: number;
+  radio1_3?: number;
+  radio1_4?: number;
+  radio1_5?: number;
+  radio1_6?: number;
+  radio1_7?: number;
+  radio2_1?: number;
+  radio2_2?: number;
+  radio2_3?: number;
+  radio2_4?: number;
+  radio2_5?: number;
   secondCount: number;
 }
 export const useExperimentStore = defineStore("experiment", {
@@ -21,6 +37,7 @@ export const useExperimentStore = defineStore("experiment", {
     userInfo: {} as User,
     experimentData: [] as Experiment[],
     checkQuestion: [] as CheckQuestion[],
+    radiosData: {} as Radios,
   }),
   getters: {},
   actions: {
