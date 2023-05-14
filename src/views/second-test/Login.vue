@@ -37,6 +37,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
         :label-position="labelPosition"
         :model="formLabelAlign"
       >
+        <div class="text-red-500">请输入和实验一相同名字</div>
         <el-form-item label="姓名" prop="studyName">
           <el-input v-model="formLabelAlign.studyName" />
         </el-form-item>
