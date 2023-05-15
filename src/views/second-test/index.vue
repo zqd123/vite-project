@@ -36,7 +36,7 @@ currentItem.value =
     : largeInformationImages[testIndex.value];
 /**选中正确选项回调 */
 const checkClickHandle = () => {
-  router.push({ path: "/seconde/login", query: route.query });
+  router.push({ path: "/seconde/over", query: route.query });
 };
 </script>
 <template>

@@ -54,6 +54,12 @@ const routes: RouteRecordRaw[] = [
         props: (route) => ({ query: route.query }),
       },
       {
+        path: "over",
+        name: "over",
+        component: () => import("../views/second-test/OverPage.vue"),
+        props: true,
+      },
+      {
         path: "endTest",
         name: "endTest",
         component: () => import("../views/second-test/endTest.vue"),
