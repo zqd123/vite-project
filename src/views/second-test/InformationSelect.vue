@@ -63,9 +63,9 @@ const ok = () => {
     <div class="mb-4">
       <div>请点击您认为性价比最高的课程，并回答问题。</div>
     </div>
-    <el-button class="absolute -top-10" type="primary" text size="large"
+    <!-- <el-button class="absolute -top-10" type="primary" text size="large"
       ><span class="text-lg">{{ countdown }} s</span></el-button
-    >
+    > -->
     <div class="flex flex-wrap justify-center gap-2">
       <div
         v-for="item in testItem.children"
