@@ -41,7 +41,7 @@ const selectHandle = () => {
 const ok = () => {
   dialogVisible.value = false;
   emit("checkClickHandle");
-  initSecond();
+  // initSecond();
 };
 </script>
 <template>

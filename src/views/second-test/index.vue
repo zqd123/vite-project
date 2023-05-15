@@ -36,22 +36,7 @@ currentItem.value =
     : largeInformationImages[testIndex.value];
 /**选中正确选项回调 */
 const checkClickHandle = () => {
-  router.push({ path: "/seconde/endTest", query: route.query });
-  // if (testIndex.value >= 2) {
-  //   router.push({ path: "/seconde/endTest" });
-  //   return;
-  // }
-  // testIndex.value += 1;
-  // currentItem.value =
-  //   customQuery.type === SECONDETYPE.small
-  //     ? smallInformationImages[testIndex.value]
-  //     : customQuery.type === SECONDETYPE.medium
-  //     ? mediumInformationImages[testIndex.value]
-  //     : largeInformationImages[testIndex.value];
-  // console.log(
-  //   "🚀 ~ file: index.vue:29 ~ checkClickHandle ~ currentItem.value:",
-  //   currentItem.value
-  // );
+  router.push({ path: "/seconde/login", query: route.query });
 };
 </script>
 <template>

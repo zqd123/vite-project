@@ -66,7 +66,6 @@ const submitForm = async (formEl: FormInstance | undefined) => {
         radio2_5: ruleForm.radio2_5,
         secondCount: props.secondCount,
       };
-      // emit("ok");
       saveTableData();
     } else {
       console.log("error submit!", fields);
@@ -112,7 +111,7 @@ const saveTableData = () => {
         confirmButtonText: "确定",
         callback: () => {
           experimentStore.checkQuestion = [];
-          router.push({ path: "/seconde/test2", query: route.query });
+          emit("ok");
         },
       });
     })
