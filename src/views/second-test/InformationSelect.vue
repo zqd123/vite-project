@@ -83,7 +83,6 @@ const ok = () => {
 
     <el-dialog
       v-model="dialogVisible"
-      title="请选择"
       width="60%"
       :align-center="true"
       :show-close="false"
