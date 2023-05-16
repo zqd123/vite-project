@@ -9,7 +9,7 @@ const loading = ref(false);
 const getTableData = () => {
   loading.value = true;
   axios
-    .get("https://80e21bb.r1.cpolar.top/get_user")
+    .get("https://14614cdb.r1.cpolar.top/get_user")
     .then((res) => {
       loading.value = false;
       console.log("value", res.data);
