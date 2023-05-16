@@ -133,7 +133,7 @@ const saveTableData = () => {
       label-position="right"
     >
       <div class="flex justify-start font-bold">
-        问题一：感知选择过载 7分量表 最差1分——最好7分
+        问题一：感知选择过载7分量表 最轻负荷1分—最重负荷7分
       </div>
       <el-form-item label="1.“有太多不同的选择需要考虑”" prop="radio1_1">
         <el-rate
@@ -198,7 +198,7 @@ const saveTableData = () => {
       </el-form-item>
 
       <div class="flex justify-start font-bold">
-        问题二：决策信心 7分量表 最差1分——最好7分
+        问题二：决策信心7分量表 最无信心1分—最有信心7分
       </div>
       <el-form-item
         label="1.“我100%相信我的选择在客观上比课程网站上的其他选择好”"
