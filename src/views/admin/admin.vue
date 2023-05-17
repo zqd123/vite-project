@@ -9,7 +9,7 @@ const loading = ref(false);
 const getTableData = () => {
   loading.value = true;
   axios
-    .get("https://5d80910d.r1.cpolar.top/get_user")
+    .get("https://zhangqd.mynatapp.cc/get_user")
     .then((res) => {
       loading.value = false;
       console.log("value", res.data);

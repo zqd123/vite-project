@@ -102,7 +102,7 @@ const saveTableData = () => {
   const obj = tableData.value[0];
   saveLoading.value = true;
   axios
-    .post("https://5d80910d.r1.cpolar.top/add_user", {
+    .post("https://zhangqd.mynatapp.cc/add_user", {
       ...obj,
     })
     .then((res) => {
