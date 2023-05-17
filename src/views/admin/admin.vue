@@ -56,7 +56,7 @@ const download = (str: string, data: CheckQuestion[]) => {
   const link = document.createElement("a");
   link.href = uri;
   // 对下载的文件命名
-  link.download = experimentStore.userInfo.studyName ?? "export" + ".xlsx";
+  link.download = experimentStore.userInfo.studyName ?? "export" + ".csv";
   link.click();
 };
 </script>
