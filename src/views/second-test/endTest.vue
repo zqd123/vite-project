@@ -46,7 +46,7 @@ const saveTableData = () => {
   // });
   saveLoading.value = true;
   axios
-    .post("https://14614cdb.r1.cpolar.top/add_user", {
+    .post("https://5d80910d.r1.cpolar.top/add_user", {
       ...obj,
     })
     .then((res) => {
